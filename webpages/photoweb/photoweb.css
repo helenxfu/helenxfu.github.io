@@ -1,0 +1,162 @@
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  color: rgb(60, 64, 67);
+  font-size: 16px;
+  text-align: center;
+}
+a {
+  color: rgb(60, 64, 67);
+  text-decoration: none;
+  cursor: pointer;
+  transition-duration: 0.4s;
+}
+input,
+button {
+  border: none;
+  outline: none;
+}
+img {
+  width: 100%;
+}
+hr {
+  border-color: rgb(117, 0, 117, 0.5);
+}
+button {
+  cursor: pointer;
+  background-color: white;
+}
+#container {
+  max-width: 1200px;
+  margin: auto;
+  position: relative;
+}
+nav {
+  z-index: 5;
+  position: fixed;
+  height: 160px;
+  width: 130px;
+  background-color: black;
+  font-family: "Times New Roman", Times, serif;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  transition-duration: 1s;
+}
+nav::before {
+  content: "";
+  border-top: 70px solid rgb(182, 0, 182);
+  border-right: 130px solid transparent;
+  left: 0;
+  top: 160px;
+  position: absolute;
+}
+nav::after {
+  content: "";
+  border-top: 70px solid black;
+  border-left: 130px solid transparent;
+  left: 0;
+  top: 160px;
+  position: absolute;
+}
+nav > a {
+  color: white;
+}
+header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  max-width: 1200px;
+  background-color: white;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+h1 {
+  font-size: 22px;
+}
+h2 {
+  margin: 20px 0 15px 0;
+}
+.headerWing {
+  width: 20px;
+  padding-left: 10px;
+  font-size: 20px;
+}
+.photoSection {
+  padding-top: 30px;
+}
+.catPhotos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.name {
+  margin: 3px 0;
+  font-family: Georgia, Serif;
+}
+.subtext {
+  margin: 0;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 12px;
+}
+.gridbox {
+  margin: 10px;
+}
+.gridbox > img {
+  background-color: rgb(235, 217, 235);
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  font-size: 14px;
+  margin: 15px 0 20px 0;
+}
+.paginationButton {
+  border-radius: 15px;
+  font-size: 16px;
+  width: 30px;
+  height: 30px;
+  transition: background-color 0.3s;
+}
+.paginationButton:hover {
+  background-color: rgb(240, 168, 240);
+}
+.activate {
+  color: rgb(182, 0, 182);
+}
+
+.about {
+  padding: 10px;
+}
+
+footer {
+  background-color: black;
+  color: rgb(238, 238, 238);
+  padding: 15px;
+}
+.socialLinks {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 15px;
+  width: 160px;
+  margin: 0 auto;
+  padding: 10px;
+  cursor: pointer;
+}
+@media screen and (max-width: 540px) {
+  .catPhotos {
+    grid-template-columns: 1fr 1fr;
+  }
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="Vanilla JS Calendar. Design & code by Starcloud. Part of web design and front-end development portfolio."
+    />
+    <meta name="author" content="Helen Xinyun Fu" />
+    <meta
+      name="keywords"
+      content="portfolio,front-end,programming,developer,html,css,js,javascript,calendar,vanilla"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vanilla JS Calendar</title>
+    <link rel="stylesheet" href="calendar.css" />
+  </head>
+
+  <body>
+    <div>
+      <header>
+        <h1>
+          <span class="titleCrown">
+            &#9813;
+          </span>
+          Vanilla JS Calendar
+        </h1>
+      </header>
+      <div id="container" class="shell">
+        <div id="cHeader" class="shellHeader">
+          <button onclick="previous()" class="buttonTop noselect">
+            &#8249;
+          </button>
+          <div id="cTitle" class="cTitle"></div>
+          <button onclick="next()" class="buttonTop noselect">&#8250;</button>
+        </div>
+        <div id="cBody" class="shellBody">
+          <div id="cLabel" class="shellSubtitle"></div>
+          <div id="cDates"></div>
+        </div>
+        <div id="controls" class="shellFooter">
+          <form>
+            <label>Select Year and Month</label>
+            <select id="year" name="year" onchange="jump()"> </select>
+            <select id="month" name="month" onchange="jump()"> </select>
+          </form>
+          <button onclick="reset()" class="whiteButton">Reset</button>
+        </div>
+      </div>
+
+      <footer>
+        <p>&#169; Starcloud</p>
+      </footer>
+    </div>
+
+    <script src="calendar.js"></script>
+  </body>
+</html>

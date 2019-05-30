@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Helen Xinyun Fu" />
+    <meta
+      name="keywords"
+      content="portfolio,front-end,programming,developer,html,css,js,javascript"
+    />
+    <meta
+      name="description"
+      content="Part of Starcloud porfolio. Image hover on animation. Control buttons do nice things and hover over the header title for a little surprise :)"
+    />
+    <title>Hover Cats</title>
+    <link rel="stylesheet" href="hover-cats.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1 onmouseenter="topCatMouseEnter()" onmouseleave="topCatMouseLeave()">
+        Hover Cats
+      </h1>
+    </header>
+    <div class="content">
+      <div id="topCat" class="topCat">
+        <img src="../../assets/cats/base.png" alt="" />
+      </div>
+      <div class="catGrid" id="catGrid">
+        <img
+          src="../../assets/cats/banner1.png"
+          class="banner"
+          onclick="shuffleCats()"
+          alt=""
+        />
+      </div>
+      <div id="controlPanel">
+        <p>Press the banner to shuffle the cats!</p>
+        <h2>colors</h2>
+        <div id="rainbowButtons"></div>
+        <div class="colorBox">
+          <div>
+            <div class="inputBarDiv">
+              <span>R</span>
+              <input
+                id="changeRed"
+                class="slider"
+                type="range"
+                name="slideRed"
+                min="0"
+                max="255"
+                oninput="colorTest(cRed.value, cGreen.value, cBlue.value)"
+              />
+            </div>
+            <div class="inputBarDiv">
+              <span>G</span>
+              <input
+                id="changeGreen"
+                class="slider"
+                type="range"
+                name="slideGreen"
+                min="0"
+                max="255"
+                oninput="colorTest(cRed.value, cGreen.value, cBlue.value)"
+              />
+            </div>
+            <div class="inputBarDiv">
+              <span>B</span>
+              <input
+                id="changeBlue"
+                class="slider"
+                type="range"
+                name="slideBlue"
+                min="0"
+                max="255"
+                oninput="colorTest(cRed.value, cGreen.value, cBlue.value)"
+              />
+            </div>
+          </div>
+          <div class="colorBoxRight">
+            <div class="colorWindow" id="colorWindow"></div>
+            <div>
+              <p>
+                RGB (<span id="redValueText"></span>,<span
+                  id="greenValueText"
+                ></span
+                >,<span id="blueValueText"></span>)
+              </p>
+            </div>
+            <div>
+              <button onclick="colorSet(cRed.value, cGreen.value, cBlue.value)">
+                Set
+              </button>
+              <button onclick="randomNumberGenerator()">
+                Random
+              </button>
+              <button onclick="colorPass(255, 239, 170)">Reset</button>
+            </div>
+          </div>
+        </div>
+        <h2>notes</h2>
+        <div>
+          <button onclick="playNotes(0)">Do</button>
+          <button onclick="playNotes(1)">Re</button>
+          <button onclick="playNotes(2)">Mi</button>
+          <button onclick="playNotes(3)">Fa</button>
+          <button onclick="playNotes(4)">So</button>
+          <button onclick="playNotes(5)">La</button>
+          <button onclick="playNotes(6)">Ti</button>
+          <button onclick="playNotes(7)">Do</button>
+        </div>
+        <p>Try it out with keyboard!</p>
+        <p>Try tapping "s", "f", and "h" together...</p>
+        <div>
+          <button onclick="playNotes(9)">Cheer</button>
+          <button onclick="playNotes(10)">Clap</button>
+        </div>
+        <div class="peekCatContainer">
+          <h2>...</h2>
+          <button onclick="touchMeFunc()">Touch Me</button>
+          <button class="toIndex" onclick="location.href='../../index.html'">
+            Starcloud
+          </button>
+          <img
+            src="../../assets/cats/base.png"
+            id="peekCat"
+            class="peekCat peekCatAnimate"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p><small>&#169; Starcloud</small></p>
+      <p><small>All Rights Reserved</small></p>
+    </footer>
+
+    <script src="hover-cats.js"></script>
+  </body>
+</html>

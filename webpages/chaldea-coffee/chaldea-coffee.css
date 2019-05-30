@@ -1,0 +1,144 @@
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: sans-serif;
+  font-size: 13px;
+  color: rgb(60, 64, 67);
+  background-image: url("chaldea-assets/chaldea-background.png");
+  background-color: rgb(111, 75, 62);
+  background-size: 200px;
+  background-repeat: space;
+  margin: 10px;
+  text-align: justify;
+}
+a {
+  text-decoration: none;
+  color: rgb(210, 105, 30);
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+a:hover {
+  color: rgb(117, 16, 24);
+}
+.shadow {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+}
+.container {
+  max-width: 1000px;
+  margin: auto;
+}
+header {
+  font-family: "Sofia";
+  text-shadow: 1px 1px 10px rgb(255, 255, 255), -1px -1px 10px rgb(255, 255, 0);
+  text-align: center;
+  background: white;
+  background-image: url("chaldea-assets/edmond-coffee.png");
+  background-position: right top;
+  background-size: cover;
+  padding: 10px;
+}
+h1 {
+  font-size: 37px;
+  color: rgb(51, 51, 51);
+}
+h2 {
+  font-family: "Copperplate";
+  text-align: center;
+  margin-bottom: 4px;
+}
+h3 {
+  font-family: "Sofia";
+  margin-bottom: 5px;
+  text-align: center;
+}
+nav {
+  background-color: rgb(243, 220, 187);
+  border: 1px solid rgb(240, 178, 122);
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+nav > a {
+  font-family: "Copperplate";
+  font-size: 15px;
+  padding: 8px 25px;
+}
+.left {
+  float: left;
+  width: 60%;
+  background-color: rgba(255, 99, 71, 0.5);
+}
+.right {
+  float: left;
+  text-align: center;
+  width: 40%;
+  background-color: rgba(155, 150, 78, 0.5);
+}
+.card {
+  background-color: rgb(248, 244, 230);
+  padding: 20px;
+  margin: 20px;
+}
+img {
+  width: 100%;
+}
+.photo {
+  background-color: white;
+  padding: 10px;
+  border: 1px solid rgb(221, 221, 221);
+  border-radius: 4px;
+  transition: 0.5s;
+  max-width: 400px;
+  display: block;
+  margin: 10px auto;
+}
+.photo:hover {
+  opacity: 0.8;
+  transform: rotate(2deg);
+}
+.homepage {
+  transition-duration: 0.6s;
+}
+.homepage:hover {
+  color: rgb(117, 16, 24);
+}
+.logo {
+  width: 120px;
+}
+.citation {
+  text-align: right;
+  font-style: italic;
+}
+/* float clear-fix */
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+footer {
+  padding: 30px;
+  text-align: center;
+  color: rgb(160, 139, 116);
+  background: rgb(49, 33, 27);
+  margin-top: 20px;
+}
+.credit {
+  font-size: 10px;
+}
+footer > p > a:hover {
+  color: rgb(224, 190, 158);
+}
+
+@media screen and (max-width: 600px) {
+  .left,
+  .right {
+    width: 100%;
+    padding: 0;
+  }
+}

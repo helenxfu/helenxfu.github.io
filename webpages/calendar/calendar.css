@@ -1,0 +1,158 @@
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Original Surfer", cursive, sans-serif;
+  font-size: 16px;
+  color: rgb(60, 64, 67);
+  background-color: rgb(228, 228, 228);
+}
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+input,
+select,
+button {
+  border: none;
+  outline: none;
+}
+button {
+  cursor: pointer;
+  font-family: "Original Surfer", cursive, sans-serif;
+  text-decoration: none;
+  padding: 3px;
+  border-radius: 5px;
+  transition-duration: 0.3s;
+}
+.buttonTop {
+  background-color: transparent;
+  color: white;
+  padding: 5px 30px;
+}
+header {
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  color: rgb(58, 0, 45);
+}
+h1 {
+  font-size: 22px;
+  margin: 10px;
+  text-shadow: 2px 2px 2px rgb(255, 250, 253);
+}
+.titleCrown {
+  display: block;
+}
+.shell {
+  margin: 10px;
+  border: 1px solid rgb(18, 18, 61);
+  border-radius: 5px;
+}
+#container {
+  min-width: 320px;
+  max-width: 600px;
+  margin: auto;
+}
+.shellHeader {
+  text-align: center;
+  padding: 5px;
+  background-color: rgb(172, 47, 105);
+  color: rgb(240, 248, 255);
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+}
+.cTitle {
+  width: 150px;
+}
+.shellSubtitle {
+  text-align: center;
+  background-color: rgb(19, 45, 78);
+  color: rgb(240, 248, 255);
+  padding: 5px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+.colorWeek:nth-child(1) {
+  color: rgb(255, 94, 94);
+}
+.colorWeek:nth-child(7) {
+  color: rgb(112, 231, 252);
+}
+.shellBody {
+  background-color: rgb(245, 233, 228);
+  background-image: url("../../assets/cats/starcloudLogo.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.rows {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: 90px;
+}
+.dates {
+  border: 0.5px dotted rgba(192, 167, 167, 0.6);
+  background-color: rgba(255, 255, 255, 0.6);
+  transition-duration: 0.5s;
+  padding: 0 2px;
+  text-align: center;
+  vertical-align: text-bottom;
+}
+.dates:nth-child(1) {
+  background-color: rgba(255, 239, 251, 0.6);
+  color: crimson;
+}
+.dates:nth-child(7) {
+  background-color: rgba(242, 245, 255, 0.6);
+  color: blue;
+}
+.indent {
+  text-indent: 6px;
+}
+
+.dates:hover {
+  background-color: rgba(255, 226, 242, 0.6);
+  border-radius: 10px;
+  transform: scale(1.4);
+}
+.highlightToday {
+  background-color: rgba(253, 212, 212, 0.6);
+  color: rgb(138, 21, 103);
+}
+.crown {
+  color: rgb(202, 87, 145);
+}
+.shellFooter {
+  background-color: rgb(202, 198, 198);
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+}
+label {
+  font-size: 12px;
+}
+.whiteButton {
+  margin-left: 5px;
+  border-radius: 20px;
+  transition-duration: 0.3s;
+}
+.whiteButton:hover {
+  background-color: rgb(250, 215, 229);
+}
+.whiteButton:active {
+  background-color: rgb(231, 135, 173);
+}
+footer {
+  text-align: center;
+  margin-top: 20px;
+}

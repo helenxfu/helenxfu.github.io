@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Helen Xinyun Fu" />
+    <meta
+      name="keywords"
+      content="portfolio,front-end,programming,developer,html,css,js,javascript"
+    />
+    <meta
+      name="description"
+      content="Starcloud cat collection. Part of web design portfolio."
+    />
+    <title>Starcloud Photos</title>
+    <link rel="stylesheet" href="photoweb.css" />
+  </head>
+
+  <body>
+    <div id="container">
+      <header>
+        <button class="headerWing" onclick="navOpen()">&#9776;</button>
+        <h1>
+          <a>Starcloud Photos</a>
+        </h1>
+        <div class="headerWing"></div>
+      </header>
+      <nav id="myNavbar">
+        <a onclick="navClose()">Close</a>
+        <a href="#photo" onclick="navClose()">Photo</a>
+        <a href="#about" onclick="navClose()">About</a>
+      </nav>
+      <div id="photo" class="photoSection">
+        <div id="catPhotos" class="catPhotos"></div>
+        <div class="pagination">
+          <button class="paginationButton" onclick="plusPage(-1)">
+            &laquo;
+          </button>
+          <div id="pageButton"></div>
+          <button class="paginationButton" onclick="plusPage(1)">
+            &raquo;
+          </button>
+        </div>
+      </div>
+
+      <hr />
+      <div id="about" class="about">
+        <h2>ABOUT</h2>
+        <img src="../../assets/cats/banner3.png" alt="" />
+        <h3>Sample Design</h3>
+        <p>
+          Sample work of web design, code, and artwork. Click
+          <a href="../../index.html"><strong>here</strong></a> to see more of my
+          works!
+        </p>
+      </div>
+      <footer>
+        <div class="socialLinks">
+          <img
+            src="../../assets/socialLinks/mail.png"
+            alt=""
+            onclick="location.href='mailto:helenxfubiz@gmail.com'"
+          />
+          <img
+            src="../../assets/socialLinks/twitter-white.png"
+            alt=""
+            onclick="location.href='https://twitter.com/HelenStarcloud'"
+          />
+          <img
+            src="../../assets/socialLinks/linkedIn.png"
+            alt=""
+            onclick="location.href='https://www.linkedin.com/in/helenxfu'"
+          />
+          <img
+            src="../../assets/socialLinks/github.png"
+            alt=""
+            onclick="location.href='https://github.com/helenxfu'"
+          />
+        </div>
+        <p><small>&#169; Starcloud</small></p>
+      </footer>
+    </div>
+
+    <script src="photoweb.js"></script>
+  </body>
+</html>

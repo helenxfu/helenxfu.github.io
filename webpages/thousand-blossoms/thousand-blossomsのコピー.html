@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Part of Starcloud Portfolio. Sample work of web design, code, and artwork."
+    />
+    <meta name="author" content="Helen Xinyun Fu" />
+    <meta
+      name="keywords"
+      content="portfolio,front-end,programming,developer,html,css,js,javascript"
+    />
+    <title>千本桜</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Indie+Flower|Sawarabi+Mincho"
+      rel="stylesheet"
+    />
+    <style type="text/css">
+      * {
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        overflow-x: hidden;
+      }
+      body {
+        font-family: "Indie Flower", cursive;
+        font-weight: bold;
+        font-size: 16px;
+        background-color: rgb(16, 0, 26);
+        color: rgb(238, 222, 222);
+        line-height: 1.5em;
+      }
+      a {
+        text-decoration: none;
+        color: rgb(184, 48, 116);
+        cursor: pointer;
+      }
+      #container {
+        position: relative;
+        overflow: hidden;
+      }
+      .parallaxContainer {
+        position: relative;
+        width: 100%;
+        height: 500px;
+        background-color: rgb(131, 210, 241);
+        z-index: -22;
+      }
+      .parallaxLayer {
+        width: 100%;
+        height: 500px;
+        position: fixed;
+        left: 0;
+        top: 0;
+        background-position: top center;
+        background-size: 2200px 400px;
+        background-repeat: repeat-x;
+      }
+      .layer0 {
+        top: 0px;
+        background-image: url("../../assets/SakuraParallax/layer_0.png");
+      }
+      .layer1 {
+        top: 30px;
+        background-image: url("../../assets/SakuraParallax/layer_1.png");
+      }
+      .layer2 {
+        top: 60px;
+        background-image: url("../../assets/SakuraParallax/layer_2.png");
+      }
+      .layer3 {
+        top: 70px;
+        background-image: url("../../assets/SakuraParallax/layer_3.png");
+      }
+      .layer4 {
+        top: 80px;
+        background-image: url("../../assets/SakuraParallax/layer_4.png");
+      }
+      .layer5 {
+        top: 90px;
+        background-image: url("../../assets/SakuraParallax/layer_5.png");
+      }
+      .layer6 {
+        top: 100px;
+        background-image: url("../../assets/SakuraParallax/layer_6.png");
+      }
+      #cover {
+        position: absolute;
+        background-color: rgb(16, 0, 26);
+        z-index: -21;
+        height: auto;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+      input,
+      button {
+        border: none;
+        outline: none;
+        text-decoration: none;
+      }
+      button {
+        cursor: pointer;
+        background-color: rgb(236, 187, 194);
+        padding: 5px 10px;
+        border-radius: 15px;
+        transition-duration: 0.5s;
+      }
+      button:hover {
+        background-color: rgb(199, 94, 146);
+      }
+      button:active {
+        background-color: rgb(110, 41, 76);
+        color: aliceblue;
+      }
+      .buttons {
+        margin: 5px 0 10px;
+        z-index: 3;
+      }
+      .audioButtons {
+        position: absolute;
+        transform: translateX(-50px);
+      }
+      #playButton:hover,
+      #pauseButton:hover,
+      #stopButton:hover {
+        filter: sepia(100%);
+      }
+      #playButton,
+      #pauseButton,
+      #stopButton {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: rgb(184, 48, 116);
+        margin: 5px 10px;
+        position: relative;
+        cursor: pointer;
+        transition-duration: 0.6s;
+      }
+      #pauseButton {
+        background-color: rgb(237, 158, 253);
+      }
+      #stopButton {
+        background-color: rgb(250, 226, 255);
+      }
+      #playButton:after {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 0;
+        top: 5px;
+        left: 10px;
+        border-left: 14px solid rgb(248, 191, 250);
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+      }
+      #pauseButton:before {
+        position: absolute;
+        content: "";
+        width: 4px;
+        height: 18px;
+        top: 6px;
+        left: 9px;
+        background-color: rgb(131, 24, 134);
+        border-radius: 1px;
+      }
+      #pauseButton:after {
+        position: absolute;
+        content: "";
+        width: 4px;
+        height: 18px;
+        top: 6px;
+        left: 17px;
+        background-color: rgb(131, 24, 134);
+        border-radius: 1px;
+      }
+      #stopButton:after {
+        position: absolute;
+        content: "";
+        width: 12px;
+        height: 12px;
+        top: 9px;
+        left: 9px;
+        background-color: rgb(66, 9, 68);
+        border-radius: 2px;
+      }
+      ruby {
+        color: rgb(238, 222, 222);
+      }
+      rt {
+        color: rgb(177, 137, 143);
+      }
+      .headerText {
+        text-align: center;
+        animation: dropText 6s;
+      }
+      h1 {
+        color: rgb(207, 158, 204);
+      }
+      h4 {
+        color: rgb(219, 148, 148);
+      }
+      svg {
+        width: 200px;
+        height: 200px;
+        z-index: -1;
+        position: absolute;
+        left: 50%;
+      }
+      svg g.hana {
+        animation: rotateSakura 30s infinite linear;
+        transform-origin: center;
+      }
+      svg path.hanabira {
+        fill: transparent;
+        stroke: rgb(245, 173, 192);
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+        stroke-width: 3;
+        animation: drawSakura 6s ease-in 0s forwards;
+      }
+      @keyframes dropText {
+        0% {
+          opacity: 0;
+        }
+        70% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      @keyframes rotateSakura {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(359deg);
+        }
+      }
+      @keyframes drawSakura {
+        0% {
+          stroke-dashoffset: 1000;
+        }
+        30% {
+          fill: transparent;
+        }
+        60% {
+          stroke-dashoffset: 0;
+        }
+        100% {
+          stroke-dashoffset: 0;
+          fill: rgba(252, 170, 244, 0.3);
+        }
+      }
+
+      .lyrics {
+        position: relative;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        font-family: "Sawarabi Mincho", sans-serif;
+        text-align: center;
+      }
+
+      .lyricBody {
+        display: inline-block;
+        text-align: left;
+      }
+      footer {
+        position: relative;
+        text-align: center;
+        background-color: rgb(80, 7, 47);
+      }
+      .petalHolder {
+        position: absolute;
+        top: 10px;
+        left: 30px;
+        transform: rotate(270deg);
+      }
+      .petalHolder2 {
+        position: absolute;
+        top: 36px;
+        left: 25px;
+        transform: rotate(230deg);
+      }
+      .petals {
+        position: absolute;
+        border: 10px solid rgb(230, 168, 202);
+        border-radius: 16px 0 16px 0;
+      }
+      .petals::after {
+        content: "";
+        position: absolute;
+        display: block;
+        border: 10px solid rgb(230, 168, 202);
+        border-radius: 16px 0 16px 0;
+        top: -7px;
+        left: -7px;
+        transform: rotate(14deg);
+        -webkit-transform: rotate(14deg);
+        -ms-transform: rotate(14deg);
+      }
+      #mainContainer {
+        position: relative;
+      }
+
+      @media screen and (max-width: 400px) {
+        .audioButtons {
+          transform: translateX(230px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div class="parallaxContainer">
+        <div class="headerText">
+          Scroll down to see the magic...
+        </div>
+        <div
+          class="parallaxLayer layer0"
+          data-parallax-speed="0.05"
+          data-max-scroll="600"
+        ></div>
+        <div
+          class="parallaxLayer layer1"
+          data-parallax-speed="0.1"
+          data-max-scroll="600"
+        ></div>
+        <div
+          class="parallaxLayer layer2"
+          data-parallax-speed="0.3"
+          data-max-scroll="600"
+        ></div>
+        <div
+          class="parallaxLayer layer3"
+          data-parallax-speed="0.5"
+          data-max-scroll="600"
+        ></div>
+        <div
+          class="parallaxLayer layer4"
+          data-parallax-speed="0.7"
+          data-max-scroll="600"
+        ></div>
+        <div
+          class="parallaxLayer layer5"
+          data-parallax-speed="0.9"
+          data-max-scroll="600"
+        ></div>
+        <div
+          class="parallaxLayer layer6"
+          data-parallax-speed="1"
+          data-max-scroll="600"
+        ></div>
+      </div>
+
+      <div id="mainContainer">
+        <div id="cover"></div>
+        <div class="lyrics">
+          <svg viewBox="0 0 500 500">
+            <g class="hana">
+              <path
+                class="hanabira"
+                d="M251.2,53.7c0,0-19.7-14.3-40.1-37.6c-22,25.1-44.7,60.6-44.7,100.1c0,76,84.8,137.7,84.8,137.7
+								s84.8-61.6,84.8-137.7c0-39.4-22.8-75-44.7-100.1C270.8,39.4,251.2,53.7,251.2,53.7z"
+              />
+              <path
+                class="hanabira"
+                d="M60.8,192c0,0-19.7,14.3-48.1,26.5C29.8,247.1,56.5,279.8,94,292c72.3,23.5,157.1-38.1,157.1-38.1
+							s-32.4-99.7-104.7-123.2c-37.5-12.2-78.3-1.5-109,11.6C53.3,168.9,60.8,192,60.8,192z"
+              />
+              <path
+                class="hanabira"
+                d="M133.5,415.7c0,0,7.5,23.1,10.3,54c32.5-7.4,71.8-22.8,95-54.6c44.7-61.5,12.3-161.2,12.3-161.2
+							s-104.8,0-149.5,61.5C78.5,347.3,76,389.4,79,422.6C109.2,415.8,133.5,415.7,133.5,415.7z"
+              />
+              <path
+                class="hanabira"
+                d="M368.8,415.7c0,0,24.3,0,54.5,6.9c3-33.2,0.6-75.4-22.6-107.2c-44.7-61.5-149.5-61.5-149.5-61.5
+							s-32.4,99.7,12.3,161.2c23.2,31.9,62.5,47.2,95,54.6C361.3,438.9,368.8,415.7,368.8,415.7z"
+              />
+              <path
+                class="hanabira"
+                d="M441.5,192c0,0,7.5-23.1,23.4-49.7c-30.7-13.1-71.5-23.8-109-11.6c-72.3,23.5-104.7,123.2-104.7,123.2
+							S336,315.5,408.3,292c37.5-12.2,64.2-44.8,81.3-73.5C461.1,206.3,441.5,192,441.5,192z"
+              />
+            </g>
+            <g class="hana">
+              <path
+                class="hanabira"
+                d="M252.7,254.8c0,0-68.4-46.1-133.8-38.4C170.2,257.6,252.7,254.8,252.7,254.8z"
+              />
+              <path
+                class="hanabira"
+                d="M252.7,254.8c0,0-65,50.8-77.8,115.4C229.9,334.1,252.7,254.8,252.7,254.8z"
+              />
+              <path
+                class="hanabira"
+                d="M252.7,254.8c0,0,28.3,77.6,85.7,109.7C321.1,301,252.7,254.8,252.7,254.8z"
+              />
+              <path
+                class="hanabira"
+                d="M252.7,254.8c0,0,22.7-79.4-4.9-139.1C224.4,177.2,252.7,254.8,252.7,254.8z"
+              />
+              <path
+                class="hanabira"
+                d="M252.7,254.8c0,0,82.5-2.9,130.8-47.6C317.7,204,252.7,254.8,252.7,254.8z"
+              />
+            </g>
+          </svg>
+          <h1>千本桜</h1>
+          <h4>by黒うさ</h4>
+          <audio id="myAudio">
+            <source
+              src="../../assets/Sound-Files/fnaf-cheer.mp3"
+              type="audio/mpeg"
+            />
+            Your browser does not support the audio element.
+          </audio>
+
+          <div class="buttons">
+            <button onclick="changeRuby()">Ruby</button>
+            <button onclick="hideKanji()">Kanji</button>
+            <button onclick="location.href='../../index.html'">
+              Starcloud
+            </button>
+          </div>
+          <div class="lyricBody">
+            <div class="audioButtons">
+              <div id="playButton" onclick="playAudio()"></div>
+              <div id="pauseButton" onclick="pauseAudio()"></div>
+              <div id="stopButton" onclick="stopAudio()"></div>
+            </div>
+            <ruby>大胆不敵<rt>だいたんふてき</rt></ruby
+            >にハイカラ<ruby>革命<rt>かくめい</rt></ruby
+            ><br />
+            <ruby>磊々落々反戦国家<rt>らいらいらくらくはんせんこっか</rt></ruby
+            ><br />
+            <br />
+            <ruby>日<rt>ひ</rt></ruby
+            >の<ruby>丸印<rt>まるじるし</rt></ruby
+            >の<ruby>二輪車転<rt>にりんしゃころ</rt></ruby
+            >がし<br />
+            <ruby>悪霊退散<rt>あくりょうたいさん</rt></ruby>
+            <ruby>ICBM<rt>あいしーびーえむ</rt></ruby
+            ><br />
+            <br />
+            <ruby>環状線<rt>かんじょうせん</rt></ruby
+            >を<ruby>走<rt>はし</rt></ruby
+            >り<ruby>抜<rt>ぬ</rt></ruby
+            >けて<br />
+            <ruby>東奔西走<rt>とうほんせいそう</rt></ruby
+            >なんのその<br />
+            <br />
+            <ruby
+              >少年少女戦国無双<rt>しょうねんしょうじょせんごくむそう</rt></ruby
+            ><br />
+            <ruby>浮世<rt>うきよ</rt></ruby
+            >の<ruby>随<rt>まにま</rt></ruby
+            >に<br />
+            <br />
+            <ruby>千本桜<rt>せんぼんざくら</rt></ruby>
+            <ruby>夜<rt>よる</rt></ruby
+            >ニ<ruby>紛<rt>まぎ</rt></ruby
+            >レ<br />
+            <ruby>君<rt>きみ</rt></ruby
+            >ノ<ruby>声<rt>こえ</rt></ruby
+            >モ<ruby>届<rt>とど</rt></ruby
+            >カナイヨ<br />
+            <br />
+            <ruby>此処<rt>ここ</rt></ruby
+            >は<ruby>宴<rt>うたげ</rt></ruby> <ruby>鋼<rt>はがね</rt></ruby
+            >の<ruby>檻<rt>おり</rt></ruby
+            ><br />
+            その<ruby>断頭台<rt>だんとうだい</rt></ruby
+            >で<ruby>見下<rt>みお</rt></ruby
+            >ろして<br />
+            <br />
+            <ruby>三千世界<rt>さんぜんせかい</rt></ruby>
+            <ruby>常世之闇<rt>とこよのやみ</rt></ruby
+            ><br />
+            <ruby>嘆<rt>なげ</rt></ruby
+            >ク<ruby>唄<rt>うた</rt></ruby
+            >モ<ruby>聞<rt>き</rt></ruby
+            >コエナイヨ<br />
+            <br />
+            <ruby>青藍<rt>せいらん</rt></ruby
+            >の<ruby>空<rt>そら</rt></ruby> <ruby>遥<rt>はる</rt></ruby
+            >か<ruby>彼方<rt>かなた</rt></ruby
+            ><br />
+            その<ruby>光線銃<rt>こうせんじゅう</rt></ruby
+            >で<ruby>打<rt>う</rt></ruby
+            >ち<ruby>抜<rt>ぬ</rt></ruby
+            >いて<br />
+            <br />
+            <br />
+            <ruby>百戦錬磨<rt>ひゃくせんれんま</rt></ruby
+            >の<ruby>見<rt>み</rt></ruby
+            >た<ruby>目<rt>め</rt></ruby
+            >は<ruby>将校<rt>しょうこう</rt></ruby
+            ><br />
+            いったりきたりの<ruby>花魁道中<rt>おいらんどうちゅう</rt></ruby
+            ><br />
+            <br />
+            アイツもコイツも<ruby>皆<rt>みな</rt></ruby
+            >で<ruby>集<rt>あつ</rt></ruby
+            >まれ<br />
+            <ruby>聖者<rt>せいじゃ</rt></ruby
+            >の<ruby>行進<rt>こうしん</rt></ruby> わんっ つー さん しっ<br />
+            <br />
+            <ruby>禅定門<rt>ぜんじょうもん</rt></ruby
+            >を<ruby>潜<rt>くぐ</rt></ruby
+            >り<ruby>抜<rt>ぬ</rt></ruby
+            >けて<br />
+            <ruby>安楽浄土厄払<rt>あんらくじょうどやくばら</rt></ruby
+            >い<br />
+            <br />
+            きっと<ruby>終幕<rt>さいご</rt></ruby
+            >は<ruby>大団円<rt>だいだんえん</rt></ruby
+            ><br />
+            <ruby>拍手<rt>はくしゅ</rt></ruby
+            >の<ruby>合間<rt>あいま</rt></ruby
+            >に<br />
+            <br />
+            <ruby>千本桜<rt>せんぼんざくら</rt></ruby>
+            <ruby>夜<rt>よる</rt></ruby
+            >ニ<ruby>紛<rt>まぎ</rt></ruby
+            >レ<br />
+            <ruby>君<rt>きみ</rt></ruby
+            >ノ<ruby>声<rt>こえ</rt></ruby
+            >モ<ruby>届<rt>とど</rt></ruby
+            >カナイヨ<br />
+            <br />
+            <ruby>此処<rt>ここ</rt></ruby
+            >は<ruby>宴<rt>うたげ</rt></ruby> <ruby>鋼<rt>はがね</rt></ruby
+            >の<ruby>檻<rt>おり</rt></ruby
+            ><br />
+            その<ruby>断頭台<rt>だんとうだい</rt></ruby
+            >で<ruby>見下<rt>みお</rt></ruby
+            >ろして<br />
+            <br />
+            <ruby>三千世界<rt>さんぜんせかい</rt></ruby>
+            <ruby>常世之闇<rt>とこよのやみ</rt></ruby
+            ><br />
+            <ruby>嘆<rt>なげ</rt></ruby
+            >ク<ruby>唄<rt>うた</rt></ruby
+            >モ<ruby>聞<rt>き</rt></ruby
+            >コエナイヨ<br />
+            <br />
+            <ruby>希望<rt>きぼう</rt></ruby
+            >の<ruby>丘<rt>おか</rt></ruby> <ruby>遥<rt>はる</rt></ruby
+            >か<ruby>彼方<rt>かなた</rt></ruby
+            ><br />
+            その<ruby>閃光弾<rt>せんこうだん</rt></ruby
+            >を<ruby>打<rt>う</rt></ruby
+            >ち<ruby>上<rt>あ</rt></ruby
+            >げろ<br />
+            <br />
+            <br />
+            <br />
+            <ruby>環状線<rt>かんじょうせん</rt></ruby
+            >を<ruby>走<rt>はし</rt></ruby
+            >り<ruby>抜<rt>ぬ</rt></ruby
+            >けて<br />
+            <ruby>東奔西走<rt>とうほんせいそう</rt></ruby
+            >なんのその<br />
+            <br />
+            <ruby
+              >少年少女戦国無双<rt>しょうねんしょうじょせんごくむそう</rt></ruby
+            ><br />
+            <ruby>浮世<rt>うきよ</rt></ruby
+            >の<ruby>随<rt>まにま</rt></ruby
+            >に<br />
+            <br />
+            <ruby>千本桜<rt>せんぼんざくら</rt></ruby>
+            <ruby>夜<rt>よる</rt></ruby
+            >ニ<ruby>紛<rt>まぎ</rt></ruby
+            >レ<br />
+            <ruby>君<rt>きみ</rt></ruby
+            >ノ<ruby>声<rt>こえ</rt></ruby
+            >モ<ruby>届<rt>とど</rt></ruby
+            >カナイヨ<br />
+            <br />
+            <ruby>此処<rt>ここ</rt></ruby
+            >は<ruby>宴<rt>うたげ</rt></ruby> <ruby>鋼<rt>はがね</rt></ruby
+            >の<ruby>檻<rt>おり</rt></ruby
+            ><br />
+            その<ruby>断頭台<rt>だんとうだい</rt></ruby
+            >を<ruby>飛<rt>と</rt></ruby
+            >び<ruby>降<rt>お</rt></ruby
+            >りて<br />
+            <br />
+            <ruby>千本桜<rt>せんぼんざくら</rt></ruby>
+            <ruby>夜<rt>よる</rt></ruby
+            >ニ<ruby>紛<rt>まぎ</rt></ruby
+            >レ<br />
+            <ruby>君<rt>きみ</rt></ruby
+            >が<ruby>歌<rt>うた</rt></ruby
+            >い<ruby>僕<rt>ぼく</rt></ruby
+            >は<ruby>踊<rt>おど</rt></ruby
+            >る<br />
+            <br />
+            <ruby>此処<rt>ここ</rt></ruby
+            >は<ruby>宴<rt>うたげ</rt></ruby> <ruby>鋼<rt>はがね</rt></ruby
+            >の<ruby>檻<rt>おり</rt></ruby
+            ><br />
+            さあ<ruby>光線銃<rt>こうせんじゅう</rt></ruby
+            >を<ruby>撃<rt>う</rt></ruby
+            >ちまくれ<br />
+          </div>
+        </div>
+      </div>
+      <footer>
+        <div class="petalHolder">
+          <div class="petals"></div>
+        </div>
+        <div class="petalHolder2">
+          <div class="petals"></div>
+        </div>
+        <p>Credits:</p>
+        <p>Lyric text from UtaTen</p>
+        <p>Web design & Art &copy; Starcloud</p>
+      </footer>
+    </div>
+  </body>
+  <script>
+    let furigana = document.getElementsByTagName("rt");
+    let test = [1, 4, 34, 3434, 43];
+    function changeRuby() {
+      if (furigana[0].style.color.match("transparent")) {
+        for (let i = 0; i < furigana.length; i++) {
+          furigana[i].style.color = "rgb(177, 137, 143)";
+        }
+      } else {
+        for (let i = 0; i < furigana.length; i++) {
+          furigana[i].style.color = "transparent";
+        }
+      }
+    }
+
+    function hideKanji() {
+      var ruby = document.getElementsByTagName("ruby");
+      for (i = 0; i < ruby.length; i++) {
+        if (ruby[i].style.color.match("transparent")) {
+          document.getElementsByTagName("ruby")[i].style.color = "crimson";
+        } else if (ruby[i].style.color.match("crimson")) {
+          document.getElementsByTagName("ruby")[i].style.color =
+            "rgb(238, 222, 222)";
+        } else {
+          document.getElementsByTagName("ruby")[i].style.color = "transparent";
+        }
+      }
+    }
+    var myMusic = document.getElementById("myAudio");
+
+    function playAudio() {
+      myMusic.play();
+    }
+    function pauseAudio() {
+      myMusic.pause();
+    }
+    function stopAudio() {
+      myMusic.pause();
+      myMusic.currentTime = 0;
+    }
+    var flowerContainer = document.getElementById("container");
+
+    (function(petalsDocument, petalsBody, windowSize) {
+      var petalCss = petalsDocument.createElement("div");
+      petalCss.id = "sakura";
+
+      petalCss.innerHTML =
+        "<style>" +
+        ".t1{border-color:rgb(250, 241, 242);}" +
+        ".t2{border-color:rgb(253, 221, 227);}" +
+        ".t3{border-color:rgb(255, 209, 217);}" +
+        ".t4{border-color:rgb(252, 196, 205);}" +
+        ".t5{border-color:rgb(255, 175, 189);}" +
+        ".t6{border-color:rgb(248, 148, 165);}" +
+        ".t7{border-color:rgb(248, 191, 245);}" +
+        ".t8{border-color:rgb(248, 217, 245);}" +
+        ".t9{border-color:rgb(230, 168, 202);}" +
+        ".t1::after{border-color:rgb(250, 241, 242);}" +
+        ".t2::after{border-color:rgb(253, 221, 227);}" +
+        ".t3::after{border-color:rgb(255, 209, 217);}" +
+        ".t4::after{border-color:rgb(252, 196, 205);}" +
+        ".t5::after{border-color:rgb(255, 175, 189);}" +
+        ".t6::after{border-color:rgb(248, 148, 165);}" +
+        ".t7::after{border-color:rgb(248, 191, 245);}" +
+        ".t8::after{border-color:rgb(248, 217, 245);}" +
+        ".t9::after{border-color:rgb(230, 168, 202);}" +
+        ".y1{-webkit-animation:v1 10s infinite;animation:v1 10s infinite;}" +
+        ".y2{-webkit-animation:v2 10s infinite;animation:v2 10s infinite;}" +
+        ".y3{-webkit-animation:v3 9s infinite;animation:v3 9s infinite;}" +
+        ".y4{-webkit-animation:v4 9s infinite;animation:v4 9s infinite;}" +
+        ".y5{-webkit-animation:v5 8s infinite;animation:v5 8s infinite;}" +
+        ".y6{-webkit-animation:v6 8s infinite;animation:v6 8s infinite;}" +
+        "@-webkit-keyframes v1{" +
+        "from{-webkit-transform: rotate(0deg) scale(1);}" +
+        "50%{-webkit-transform: rotate(270deg) scale(1);}" +
+        "to{-webkit-transform: rotate(1deg) scale(1);}" +
+        "}" +
+        "@-webkit-keyframes v2{" +
+        "from{-webkit-transform: rotate(-90deg) scale(.9);}" +
+        "50%{-webkit-transform: rotate(-360deg) scale(.9);}" +
+        "to{-webkit-transform: rotate(-89deg) scale(.9);}" +
+        "}" +
+        "@-webkit-keyframes v3{" +
+        "from{-webkit-transform: rotate(30deg) scale(.8);}" +
+        "50%{-webkit-transform: rotate(300deg) scale(.8);}" +
+        "to{-webkit-transform: rotate(29deg) scale(.8);}" +
+        "}" +
+        "@-webkit-keyframes v4{" +
+        "from{-webkit-transform: rotate(-120deg) scale(.7);}" +
+        "50%{-webkit-transform: rotate(-390deg) scale(.7);}" +
+        "to{-webkit-transform: rotate(-119deg) scale(.7);}" +
+        "}" +
+        "@-webkit-keyframes v5{" +
+        "from{-webkit-transform: rotate(60deg) scale(.6);}" +
+        "50%{-webkit-transform: rotate(330deg) scale(.6);}" +
+        "to{-webkit-transform: rotate(59deg) scale(.6);}" +
+        "}" +
+        "@-webkit-keyframes v6{" +
+        "from{-webkit-transform: rotate(-150deg) scale(.5);}" +
+        "50%{-webkit-transform: rotate(-420deg) scale(.5);}" +
+        "to{-webkit-transform: rotate(-149deg) scale(.5);}" +
+        "}" +
+        "@keyframes v1{" +
+        "from{transform: rotate(0deg) scale(1);}" +
+        "50%{transform: rotate(270deg) scale(1);}" +
+        "to{transform: rotate(1deg) scale(1);}" +
+        "}" +
+        "@keyframes v2{" +
+        "from{transform: rotate(-90deg) scale(.9);}" +
+        "50%{transform: rotate(-360deg) scale(.9);}" +
+        "to{transform: rotate(-89deg) scale(.9);}" +
+        "}" +
+        "@keyframes v3{" +
+        "from{transform: rotate(30deg) scale(.8);}" +
+        "50%{transform: rotate(300deg) scale(.8);}" +
+        "to{transform: rotate(29deg) scale(.8);}" +
+        "}" +
+        "@keyframes v4{" +
+        "from{transform: rotate(-120deg) scale(.7);}" +
+        "50%{transform: rotate(-390deg) scale(.7);}" +
+        "to{transform: rotate(-119deg) scale(.7);}" +
+        "}" +
+        "@keyframes v5{" +
+        "from{transform: rotate(60deg) scale(.6);}" +
+        "50%{transform: rotate(330deg) scale(.6);}" +
+        "to{transform: rotate(59deg) scale(.6);}" +
+        "}" +
+        "@keyframes v6{" +
+        "from{transform: rotate(-150deg) scale(.5);}" +
+        "50%{transform: rotate(-420deg) scale(.5);}" +
+        "to{transform: rotate(-149deg) scale(.5);}" +
+        "}" +
+        "</style>";
+      petalsBody.appendChild(petalCss);
+
+      var windowHeight = windowSize.innerHeight;
+      var scrollPosition =
+        petalsDocument.documentElement.scrollTop || petalsBody.scrollTop;
+      var zIndexPetals = -20;
+      var valueTop = new Array();
+      var valueLeft = new Array();
+      var swingEnd = new Array();
+      var valueGravity = new Array();
+      var petalId = new Array();
+      var swingStart = new Array();
+      var k = 0;
+
+      //scroll not compatible in safari and cellphone browser.
+      //need to fix zindex
+      petalsDocument.addEventListener(
+        "scroll",
+        function() {
+          scrollPosition =
+            petalsDocument.documentElement.scrollTop || petalsBody.scrollTop;
+        },
+        false
+      );
+
+      window.addEventListener(
+        "resize",
+        function() {
+          windowHeight = windowSize.innerHeight;
+        },
+        false
+      );
+
+      //prepare 30 petals
+      for (var i = 0; i < 30; i++) {
+        var makePetals = petalsDocument.createElement("div");
+        makePetals.id = "cherrybira" + i;
+        valueTop[i] = Math.random() * -500 + scrollPosition; //start position top
+        valueLeft[i] = Math.random() * windowSize.innerWidth;
+        makePetals.setAttribute("class", "petals");
+        makePetals.setAttribute(
+          "style",
+          "z-index:" +
+            (zIndexPetals + i) +
+            ";top:" +
+            valueTop[i] +
+            "px;left:" +
+            valueLeft[i] +
+            "px;"
+        ); //z-index orz
+        var clss =
+          "petals t" +
+          (Math.floor(Math.random() * 9) + 1) +
+          " y" +
+          (Math.floor(Math.random() * 6) + 1);
+        makePetals.setAttribute("class", clss);
+        petalCss.appendChild(makePetals);
+        swingEnd[i] = Math.random() * 40 + 5;
+        valueGravity[i] = Math.random() * 5 + 2;
+        petalId[i] = petalsDocument.getElementById("cherrybira" + i);
+        swingStart[i] = 0; //initial swing
+      }
+
+      setInterval(function() {
+        for (var i = 0; i < 30; i++) {
+          if (valueTop[i] < scrollPosition + windowHeight + 40) {
+            if (swingEnd[i] >= swingStart[i]) {
+              //left
+              valueLeft[i] = valueLeft[i] + 0.5 + Math.random() * 0.5; //increase left
+            } else {
+              valueLeft[i] = valueLeft[i] - 0.5 - Math.random() * 0.5; //decrease left
+            }
+            if (swingEnd[i] * 2 <= swingStart[i]) {
+              //restart counter
+              swingStart[i] = 0;
+            }
+          } else {
+            valueTop[i] = scrollPosition - 40;
+            valueLeft[i] = Math.random() * windowSize.innerWidth; //determine left position
+          }
+          //wind
+          if (k >= 100 && k <= 105) {
+            valueLeft[i] = valueLeft[i] + 3;
+          } else if (k >= 106 && k <= 120) {
+            valueLeft[i] = valueLeft[i] + 5;
+          } else if (k >= 121 && k <= 290) {
+            valueLeft[i] = valueLeft[i] + 8;
+          } else if (k >= 291 && k <= 320) {
+            valueLeft[i] = valueLeft[i] + 4;
+          } else if (k >= 321 && k <= 330) {
+            valueLeft[i] = valueLeft[i] + 2;
+          } else if (k >= 500 && k <= 505) {
+            valueLeft[i] = valueLeft[i] - 3;
+          } else if (k >= 506 && k <= 520) {
+            valueLeft[i] = valueLeft[i] - 5;
+          } else if (k >= 521 && k <= 790) {
+            valueLeft[i] = valueLeft[i] - 8;
+          } else if (k >= 791 && k <= 820) {
+            valueLeft[i] = valueLeft[i] - 4;
+          } else if (k >= 821 && k <= 830) {
+            valueLeft[i] = valueLeft[i] - 2;
+          } else if (k >= 900) {
+            k = 0;
+          }
+
+          valueTop[i] = valueTop[i] + valueGravity[i]; //update top
+          petalId[i].style.top = valueTop[i] + "px"; //update the values
+          petalId[i].style.left = valueLeft[i] + "px";
+          swingStart[i]++;
+        }
+        k++;
+      }, 45);
+    })(window.document, flowerContainer, window);
+
+    // parallax
+
+    var ParallaxManager, ParallaxPart;
+
+    ParallaxPart = (function() {
+      function ParallaxPart(num) {
+        this.num = num;
+        this.speed = parseFloat(this.num.getAttribute("data-parallax-speed"));
+        this.maxScroll = parseInt(this.num.getAttribute("data-max-scroll"));
+      }
+
+      ParallaxPart.prototype.update = function(scrollY) {
+        if (scrollY > this.maxScroll) {
+          return;
+        }
+        var offset = -(scrollY * this.speed);
+        this.setYTransform(offset);
+      };
+
+      ParallaxPart.prototype.setYTransform = function(value) {
+        this.num.style.webkitTransform = "translate3d(0, " + value + "px, 0)";
+        this.num.style.MozTransform = "translate3d(0, " + value + "px, 0)";
+        this.num.style.OTransform = "translate3d(0, " + value + "px, 0)";
+        this.num.style.transform = "translate3d(0, " + value + "px, 0)";
+        this.num.style.msTransform = "translateY(" + value + "px)";
+      };
+
+      return ParallaxPart;
+    })();
+
+    ParallaxManager = (function() {
+      ParallaxManager.prototype.parts = [];
+
+      function ParallaxManager(elements) {
+        this.elements = document.querySelectorAll(elements);
+        this.elements = Array.prototype.slice.call(this.elements);
+
+        for (var i in this.elements) {
+          this.parts.push(new ParallaxPart(this.elements[i]));
+        }
+        for (var i in this.parts) {
+          this.parts[i].update(0);
+        }
+
+        window.addEventListener("scroll", this.onScroll.bind(this));
+      }
+
+      ParallaxManager.prototype.onScroll = function() {
+        window.requestAnimationFrame(this.scrollHandler.bind(this));
+      };
+
+      ParallaxManager.prototype.scrollHandler = function() {
+        scrollY = window.pageYOffset;
+        for (var i in this.parts) {
+          this.parts[i].update(scrollY);
+        }
+      };
+
+      return ParallaxManager;
+    })();
+
+    new ParallaxManager(".parallaxLayer");
+  </script>
+</html>
