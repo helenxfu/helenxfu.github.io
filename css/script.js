@@ -1,33 +1,33 @@
 const slides = [
   {
-    source: "./assets/cats/banner2.png",
+    source: "./assets/index-banner/banner2.png",
     tab: "Hello World!",
     link: "./webpages/photoweb/photoweb.html",
     typewriter:
       "Welcome to my portfolio! Please take some time to have a look around! :)"
   },
   {
-    source: "./assets/cats/banner1.png",
+    source: "./assets/index-banner/banner1.png",
     tab: "click",
     link: "./webpages/calendar/calendar.html",
     typewriter: "Calendar coded in vanilla + 2 frameworks."
   },
   {
-    source: "./assets/cats/banner3.png",
+    source: "./assets/index-banner/banner3.png",
     tab: "Play!",
     link: "./webpages/hover-cats/hover-cats.html",
     typewriter:
       "Play with the buttons! Full of fun and color, movement, and sound."
   },
   {
-    source: "./assets/cats/banner2.png",
+    source: "./assets/index-banner/banner2.png",
     tab: "poke",
     link: "",
     typewriter:
       "Todo list with date countdown, importance, and completion filters for task organization, and language option."
   },
   {
-    source: "./assets/cats/banner1.png",
+    source: "./assets/index-banner/banner1.png",
     tab: "enjoy ;)",
     link: "",
     typewriter: "Contact me for freelance or for hire :)"

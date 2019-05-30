@@ -297,7 +297,7 @@ function touchMeFunc() {
 
 function shuffleCats() {
   catGrid.innerHTML = `<img
-    src="../../assets/cats/banner1.png"
+    src="../../assets/index-banner/banner1.png"
     class="banner"
     onclick="shuffleCats()"
     alt=""
