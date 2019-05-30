@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Simon</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <audio class="clip">
+      <source
+        src="../../assets/Sound-Files/钢琴音色MP3/40-C  -小字1组.mp3"
+      />
+    </audio>
+    <audio class="clip">
+      <source src="../../assets/Sound-Files/钢琴音色MP3/42-D -小字1组.mp3" />
+    </audio>
+    <audio class="clip">
+      <source
+        src="../../assets/Sound-Files/钢琴音色MP3/44-E  -小字1组.mp3"
+      />
+    </audio>
+    <audio class="clip">
+      <source
+        src="../../assets/Sound-Files/钢琴音色MP3/45-F   -小字1组.mp3"
+      />
+    </audio>
+  </head>
+  <body>
+    <div id="outerCircle">
+      <div id="topleft" class="quarter" onclick="playerPush(0)"></div>
+      <div id="topright" class="quarter" onclick="playerPush(1)"></div>
+      <div id="bottomleft" class="quarter" onclick="playerPush(2)"></div>
+      <div id="bottomright" class="quarter" onclick="playerPush(3)"></div>
+
+      <div id="innerCircle">
+        <div id="title">SIMON</div>
+        <div id="switch">
+          <label
+            ><input type="checkbox" class="toggle" id="on" /><br />POWER</label
+          >
+          <button class="button" id="start">Start</button>
+          <label
+            ><input
+              type="checkbox"
+              class="toggle"
+              id="strict"
+            /><br />STRICT</label
+          >
+        </div>
+        <div id="turn"></div>
+        <div>
+          COUNT
+        </div>
+      </div>
+    </div>
+    <p class="message">Turn the power on first!</p>
+
+    <script src="script.js"></script>
+  </body>
+</html>

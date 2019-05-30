@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>game</title>
+    <style type="text/css">
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: sans-serif;
+        font-size: 16px;
+      }
+      input,
+      button {
+        border: none;
+        outline: none;
+      }
+      button {
+        font-family: "Arial Black", Gadget, sans-serif;
+        font-size: 12px;
+        padding: 10px 15px;
+        border-radius: 7px;
+        text-decoration: none;
+        display: inline-block;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        transition-duration: 0.3s;
+        margin: 5px;
+        cursor: pointer;
+        border: rgb(168, 168, 177) solid 1px;
+        background-color: white;
+      }
+      button:active {
+        transform: translateY(2px);
+        background-color: rgb(243, 243, 243);
+        box-shadow: none;
+      }
+      .active {
+        transform: translateY(2px);
+        background-color: rgb(243, 243, 243);
+        box-shadow: none;
+      }
+      canvas {
+        border: 1px solid rgb(211, 211, 211);
+        background: transparent;
+      }
+      #gameContainer {
+        position: relative;
+        width: 480px;
+        height: 270px;
+        margin: auto;
+        background-color: rgb(126, 126, 126);
+      }
+      #preStart {
+        position: relative;
+      }
+      #preStart button {
+        position: absolute;
+        top: 135px;
+        left: 240px;
+        transform: translate(-50%, -50%);
+        margin: 0;
+      }
+      #gameOverScreen {
+        position: absolute;
+        display: none;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        text-align: center;
+        color: crimson;
+        padding-top: 130px;
+      }
+      .gameControlText {
+        padding: 10px;
+        text-align: center;
+      }
+      footer {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="gameControlText">
+        <p>Pure Javascript</p>
+        <p>
+          Based on game example from
+          <a href="https://www.w3schools.com/graphics/game_intro.asp"
+            >w3schools</a
+          >.
+        </p>
+      </div>
+      <div id="gameContainer">
+        <div id="preStart">
+          <button onclick="startGame(); hideStart()">Start Game</button>
+        </div>
+        <div id="gameOverScreen">
+          <p>Game Over</p>
+        </div>
+      </div>
+      <div class="gameControlText">
+        Use the keypad or buttons
+        <div>
+          <!--use onmousedown for stop, onclick for continuous movement-->
+          <p>
+            <button onmousedown="move('up')" onmouseup="clearmove()" id="up">
+              &uarr;
+            </button>
+          </p>
+          <button onmousedown="move('left')" onmouseup="clearmove()" id="left">
+            &larr;
+          </button>
+          <button onmousedown="move('down')" onmouseup="clearmove()" id="down">
+            &darr;
+          </button>
+          <button
+            onmousedown="move('right')"
+            onmouseup="clearmove()"
+            id="right"
+          >
+            &rarr;
+          </button>
+        </div>
+      </div>
+      <footer>
+        <a href="javascript: history.go(-1)">Starcloud</a>
+      </footer>
+    </div>
+  </body>
+  <script>
+    var mainCharacter;
+    var obstacles = [];
+    var myBackground;
+    var score;
+    var endsound;
+    var mymusic; //cannot have var music
+    var gameOver = document.getElementById("gameOverScreen");
+
+    var gameArea = {
+      canvas: document.createElement("canvas"),
+      start: function() {
+        this.canvas.width = 480;
+        this.canvas.height = 270;
+        this.context = this.canvas.getContext("2d");
+        document
+          .getElementById("gameContainer")
+          .insertBefore(
+            this.canvas,
+            document.getElementById("gameContainer").childNodes[0]
+          );
+        this.frameNo = 0;
+        this.interval = setInterval(updateGameArea, 10); //speed
+        /*
+            window.addEventListener('keydown', function(e){
+                gameArea.key = e.keyCode;
+            })
+            window.addEventListener('keyup', function(e){
+                gameArea.key = false;
+            })
+*/
+      },
+      clear: function() {
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      },
+      stop: function() {
+        clearInterval(this.interval);
+      }
+    };
+
+    document.addEventListener("keydown", keyDownFunc, false);
+    document.addEventListener("keyup", keyUpFunc, false);
+    gameOver.addEventListener("click", function() {
+      document.location.reload();
+    });
+
+    function startGame() {
+      mainCharacter = new component(
+        30,
+        30,
+        "../../assets/cats/lady.png",
+        10,
+        120,
+        "image"
+      );
+      score = new component(
+        "12px",
+        "Consolas",
+        "rgb(20, 17, 53)",
+        350,
+        25,
+        "text"
+      );
+      myBackground = new component(
+        656,
+        270,
+        "../assets/gamebacktemp.jpg",
+        0,
+        0,
+        "background"
+      );
+      endsound = new sound("../../assets/Sound-Files/clappingsfx.mp3");
+      mymusic = new sound("../../assets/Sound-Files/fnaf-cheer.mp3");
+      mymusic.loop = true;
+      mymusic.play();
+      gameArea.start();
+    }
+
+    //affects frequency of the pillar
+    function everyinterval(n) {
+      if ((gameArea.frameNo / n) % 1 == 0) {
+        return true;
+      }
+      return false;
+    }
+
+    function component(width, height, color, x, y, type) {
+      this.type = type;
+      if (type == "image" || type == "background") {
+        this.image = new Image();
+        this.image.src = color;
+      }
+      this.width = width;
+      this.height = height;
+      this.speedX = 0;
+      this.speedY = 0;
+      this.x = x;
+      this.y = y;
+      this.update = function() {
+        ctx = gameArea.context;
+        if (this.type == "text") {
+          ctx.font = this.width + " " + this.height;
+          ctx.fillStyle = color;
+          ctx.fillText(this.text, this.x, this.y);
+        } else if (type == "image" || type == "background") {
+          ctx.drawImage(this.image, this.x, this.y, this.width, this.height);
+          if (type == "background") {
+            ctx.drawImage(
+              this.image,
+              this.x + this.width,
+              this.y,
+              this.width,
+              this.height
+            );
+          }
+        } else {
+          ctx.fillStyle = color;
+          ctx.fillRect(this.x, this.y, this.width, this.height);
+        }
+      };
+      this.newPosition = function() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.type == "background") {
+          if (this.x == -this.width) {
+            this.x = 0;
+          }
+        }
+      };
+      this.crashWith = function(otherObjects) {
+        var myleft = this.x;
+        var myright = this.x + this.width;
+        var mytop = this.y;
+        var mybottom = this.y + this.height;
+        var otherleft = otherObjects.x;
+        var otherright = otherObjects.x + otherObjects.width;
+        var othertop = otherObjects.y;
+        var otherbottom = otherObjects.y + otherObjects.height;
+        var crash = true;
+
+        if (
+          mybottom < othertop ||
+          mytop > otherbottom ||
+          myright < otherleft ||
+          myleft > otherright
+        ) {
+          crash = false;
+        }
+        if (
+          mytop === 0 ||
+          mybottom === 270 ||
+          myright === 480 ||
+          myleft === 0
+        ) {
+          crash = true;
+        }
+        return crash;
+      };
+    }
+
+    function keyDownFunc(e) {
+      if (e.keyCode == 38) {
+        move("up");
+        document.getElementById("up").classList.add("active");
+      } else if (e.keyCode == 40) {
+        move("down");
+        document.getElementById("down").classList.add("active");
+      } else if (e.keyCode == 37) {
+        move("left");
+        document.getElementById("left").classList.add("active");
+      } else if (e.keyCode == 39) {
+        move("right");
+        document.getElementById("right").classList.add("active");
+      }
+    }
+
+    function keyUpFunc(e) {
+      clearmove();
+      if (e.keyCode == 38) {
+        document.getElementById("up").classList.remove("active");
+      } else if (e.keyCode == 40) {
+        document.getElementById("down").classList.remove("active");
+      } else if (e.keyCode == 37) {
+        document.getElementById("left").classList.remove("active");
+      } else if (e.keyCode == 39) {
+        document.getElementById("right").classList.remove("active");
+      }
+    }
+
+    function move(dir) {
+      //mainCharacter.image.src = "../../assets/cats/karupin.png";
+      if (dir == "up") {
+        mainCharacter.image.src = "../../assets/cats/karupin.png";
+        mainCharacter.speedY = -1;
+      }
+      if (dir == "down") {
+        mainCharacter.image.src = "../../assets/cats/tuxedo.png";
+        mainCharacter.speedY = 1;
+      }
+      if (dir == "left") {
+        mainCharacter.image.src = "../../assets/cats/nit.png";
+        mainCharacter.speedX = -1;
+      }
+      if (dir == "right") {
+        mainCharacter.image.src = "../../assets/cats/star.png";
+        mainCharacter.speedX = 1;
+      }
+    }
+
+    function updateGameArea() {
+      var x, y;
+
+      for (i = 0; i < obstacles.length; i += 1) {
+        if (mainCharacter.crashWith(obstacles[i])) {
+          mymusic.stop();
+          endsound.play();
+          gameArea.stop();
+          gameOver.style.display = "block";
+          return;
+        }
+      }
+      gameArea.clear();
+      gameArea.frameNo += 1;
+      myBackground.speedX = -0.5;
+      myBackground.newPosition(); // ordering tres important en le canvas!!
+      myBackground.update();
+      if (gameArea.frameNo == 1 || everyinterval(150)) {
+        x = gameArea.canvas.width;
+        minHeight = 20;
+        maxHeight = 200;
+        height = Math.floor(
+          Math.random() * (maxHeight - minHeight + 1) + minHeight
+        );
+        minGap = 50;
+        maxGap = 200;
+        gap = Math.floor(Math.random() * (maxGap - minGap + 1) + minGap);
+        obstacles.push(new component(10, height, "green", x, 0)); //bottom bar
+        obstacles.push(
+          new component(10, x - height - gap, "green", x, height + gap)
+        ); //top bar
+      }
+      for (i = 0; i < obstacles.length; i += 1) {
+        obstacles[i].x += -1;
+        obstacles[i].update();
+      }
+      score.text = "SCORE: " + gameArea.frameNo;
+      score.update();
+      mainCharacter.newPosition();
+      mainCharacter.update();
+      /* 
+        mainCharacter.speedX = 0;
+        mainCharacter.speedY = 0;
+        if (gameArea.key && gameArea.key == 37) {mainCharacter.speedX = -1;}
+        if (gameArea.key && gameArea.key == 39) {mainCharacter.speedX = 1;}
+        if (gameArea.key && gameArea.key == 38) {mainCharacter.speedY = -1;}
+        if (gameArea.key && gameArea.key == 40) {mainCharacter.speedY = 1;}
+        */
+    }
+
+    function sound(src) {
+      this.sound = document.createElement("audio");
+      this.sound.src = src;
+      this.sound.setAttribute("preload", "auto");
+      this.sound.setAttribute("controls", "none");
+      this.sound.style.display = "none";
+      document.body.appendChild(this.sound);
+      this.play = function() {
+        this.sound.play();
+      };
+      this.stop = function() {
+        this.sound.pause();
+      };
+    }
+
+    /*
+    function moveup() {
+        mainCharacter.speedY -= 1;
+    }
+    function movedown() {
+        mainCharacter.speedY += 1;
+    }
+    function moveleft() {
+        mainCharacter.speedX -= 1;
+    }
+    function moveright() {
+        mainCharacter.speedX += 1;
+    }
+*/
+
+    function clearmove() {
+      mainCharacter.image.src = "../../assets/cats/lady.png";
+      mainCharacter.speedX = 0;
+      mainCharacter.speedY = 0;
+    }
+
+    function hideStart() {
+      document.getElementById("preStart").style.display = "none";
+    }
+  </script>
+</html>

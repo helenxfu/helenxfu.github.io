@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Clock</title>
+    <style type="text/css">
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: sans-serif;
+        font-size: 16px;
+        text-align: center;
+      }
+      #txtClock {
+        color: rgb(29, 29, 88);
+        font-size: 20px;
+      }
+      #w3schoolClock {
+        background-color: rgb(245, 244, 255);
+      }
+      #imageClock {
+        background-color: rgb(226, 184, 235);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        Text and Canvas Clock with Javascript
+      </header>
+      <div id="txtClock">Text Clock</div>
+      <div>
+        <canvas id="w3schoolClock" width="300" height="300"
+          >Your browser does not support canvas</canvas
+        >
+      </div>
+      <div>
+        <canvas id="imageClock" width="400" height="400"
+          >Your browser does not support canvas</canvas
+        >
+      </div>
+      <footer></footer>
+    </div>
+  </body>
+  <script>
+    //drawClock();
+    setInterval(drawClock, 1000);
+
+    function drawClock() {
+      timeValue();
+      startTime();
+      drawFace(ctx, radius);
+      drawNumbers(ctx, radius);
+      drawTime(ctx, radius);
+      addBackgroundImage();
+      writeBrandName();
+      drawTime2(context, imgradius);
+    }
+
+    function timeValue() {
+      var now = new Date();
+      hour = now.getHours();
+      minute = now.getMinutes();
+      second = now.getSeconds();
+    }
+
+    //text Clock
+    function startTime() {
+      if (minute < 10) {
+        minute = "0" + minute;
+      }
+      if (second < 10) {
+        second = "0" + second;
+      }
+      document.getElementById("txtClock").innerHTML =
+        hour + ":" + minute + ":" + second;
+    }
+
+    //round Clock
+    var canvas = document.getElementById("w3schoolClock");
+    var ctx = canvas.getContext("2d");
+    var radius = canvas.height / 2;
+    ctx.translate(radius, radius); //move start point to center
+    radius = radius * 0.9;
+
+    //image Clock
+    var imgCanvas = document.getElementById("imageClock");
+    var context = imgCanvas.getContext("2d");
+    var imgradius = imgCanvas.height / 2;
+    context.translate(imgradius, imgradius);
+    imgradius = imgradius * 0.9;
+    var clockImage = new Image();
+    var clockImageLoaded = false;
+    clockImage.onload = function() {
+      clockImageLoaded = true;
+    };
+
+    clockImage.src = "../assets/cats/butterfly.png";
+
+    function addBackgroundImage() {
+      context.drawImage(
+        clockImage,
+        -imgCanvas.width / 2,
+        -imgCanvas.height / 2,
+        imgCanvas.width,
+        imgCanvas.height
+      );
+    }
+
+    function drawTime2(context, imgradius) {
+      //hour
+      var time = new Date();
+      var hours = time.getHours();
+      var minutes = time.getMinutes();
+      var seconds = time.getSeconds();
+
+      hours = hours % 12;
+      hours =
+        (hours * Math.PI) / 6 +
+        (minutes * Math.PI) / (6 * 60) +
+        (seconds * Math.PI) / (360 * 60);
+
+      drawHand2(context, hours, "red", imgradius * 0.4, imgradius * 0.05);
+      //minute
+      minutes = (minutes * Math.PI) / 30 + (seconds * Math.PI) / (30 * 60);
+      drawHand2(
+        context,
+        minutes,
+        "rgb(144, 154, 218)",
+        imgradius * 0.8,
+        imgradius * 0.05
+      );
+      //seconds
+      seconds = (seconds * Math.PI) / 30;
+      drawHand2(context, seconds, "white", imgradius * 0.9, imgradius * 0.02);
+    }
+
+    function drawHand2(context, position, color, length, width) {
+      context.beginPath();
+      context.lineWidth = width;
+      context.lineCap = "round";
+      context.moveTo(0, 0);
+      context.rotate(position);
+      context.lineTo(0, -length);
+      context.strokeStyle = color;
+      context.stroke();
+      context.rotate(-position);
+      context.closePath();
+    }
+
+    function writeBrandName() {
+      context.strokeStyle = "crimson";
+      context.font = "25pt Helvetica";
+      var brandName = "Starcloud";
+      var brandNameSize = context.measureText(brandName);
+      context.strokeText("Starcloud", 0 - brandNameSize.width / 2, 150);
+    }
+
+    function clockApp() {
+      if (!clockImageLoaded) {
+        setTimeout("clockApp()", 100);
+        return;
+      }
+      addBackgroundImage();
+      writeBrandName();
+    }
+
+    clockApp();
+
+    //round Clock
+    function drawFace(ctx, radius) {
+      var grad;
+      ctx.beginPath();
+      ctx.arc(0, 0, radius, 0, 2 * Math.PI); //xstart, ystart, radius, angle
+      ctx.fillStyle = "rgb(90, 115, 121)";
+      ctx.fill();
+      grad = ctx.createRadialGradient(0, 0, radius * 0.95, 0, 0, radius * 1.05);
+      grad.addColorStop(0, "aliceblue");
+      grad.addColorStop(0.5, "rgb(51, 144, 167)");
+      grad.addColorStop(1, "rgb(66, 16, 45)");
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = radius * 0.1;
+      ctx.stroke(); //draw the gradient circle
+      ctx.closePath();
+      ctx.beginPath();
+      ctx.arc(0, 0, radius * 0.1, 0, 2 * Math.PI);
+      ctx.fillStyle = "crimson";
+      ctx.fill();
+      ctx.closePath();
+      ctx.beginPath();
+      ctx.arc(0, 0, radius * 0.07, 0, 2 * Math.PI);
+      ctx.fillStyle = "white";
+      ctx.fill();
+      ctx.closePath();
+    }
+
+    function drawNumbers(ctx, radius) {
+      var ang;
+      var num;
+      ctx.font = radius * 0.15 + "px arial";
+      ctx.textBaseline = "middle";
+      ctx.textAlign = "center";
+      ctx.fillStyle = "rgb(221, 226, 255)";
+      for (num = 1; num < 13; num++) {
+        ang = (num * Math.PI) / 6;
+        ctx.rotate(ang);
+        ctx.translate(0, -radius * 0.85);
+        ctx.rotate(-ang);
+        ctx.fillText(num.toString(), 0, 0);
+        ctx.rotate(ang);
+        ctx.translate(0, radius * 0.85);
+        ctx.rotate(-ang);
+      }
+    }
+
+    function drawTime(ctx, radius) {
+      //hour
+      hour = hour % 12;
+      hour =
+        (hour * Math.PI) / 6 +
+        (minute * Math.PI) / (6 * 60) +
+        (second * Math.PI) / (360 * 60);
+      drawHand(ctx, hour, "red", radius * 0.5, radius * 0.05);
+      //minute
+      minute = (minute * Math.PI) / 30 + (second * Math.PI) / (30 * 60);
+      drawHand(ctx, minute, "rgb(144, 154, 218)", radius * 0.8, radius * 0.05);
+      //second
+      second = (second * Math.PI) / 30;
+      drawHand(ctx, second, "white", radius * 0.9, radius * 0.02);
+    }
+
+    function drawHand(ctx, pos, color, length, width) {
+      ctx.beginPath();
+      ctx.lineWidth = width;
+      ctx.lineCap = "round";
+      ctx.moveTo(0, 0);
+      ctx.rotate(pos);
+      ctx.lineTo(0, -length);
+      ctx.strokeStyle = color;
+      ctx.stroke();
+      ctx.rotate(-pos);
+      ctx.closePath();
+    }
+  </script>
+</html>

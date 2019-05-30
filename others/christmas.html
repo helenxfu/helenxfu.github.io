@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Merry Christmas</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Luckiest+Guy|Indie+Flower"
+      rel="stylesheet"
+    />
+    <style type="text/css">
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        overflow-x: hidden;
+      }
+      #container {
+        position: relative;
+        overflow: hidden;
+      }
+      body {
+        font-family: Georgia, Serif;
+        font-size: 16px;
+        background-color: rgb(17, 14, 29);
+        color: rgb(204, 185, 190);
+        text-align: center;
+      }
+      header {
+        font-family: "Luckiest Guy", cursive;
+        font-size: 25px;
+        color: rgb(131, 11, 11);
+        text-shadow: 0 0 2px rgb(0, 0, 0), 0 0 10px rgb(102, 236, 113);
+        transform: translateY(500px);
+      }
+      canvas {
+        background-color: rgb(17, 14, 29);
+      }
+      input,
+      button {
+        border: none;
+        outline: none;
+      }
+      button {
+        cursor: pointer;
+        padding: 6px;
+        border-radius: 50%;
+        background-color: rgb(190, 190, 107);
+        color: rgb(70, 60, 47);
+        box-shadow: 0 0 2px rgb(0, 0, 0), 0 0 10px rgb(255, 255, 255);
+        transition-duration: 1s;
+      }
+      .crashIt {
+        margin: 10px;
+      }
+      #playButton:hover,
+      #pauseButton:hover,
+      #stopButton:hover,
+      button:hover {
+        filter: hue-rotate(270deg);
+        color: red;
+        box-shadow: 0 0 2px rgb(0, 0, 0), 0 0 15px rgb(255, 255, 255),
+          0 0 25px rgb(255, 254, 171);
+      }
+      #playButton,
+      #pauseButton,
+      #stopButton {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: rgb(47, 185, 93);
+        margin: 5px 2px;
+        position: relative;
+        cursor: pointer;
+        transition-duration: 1s;
+        display: inline-block;
+        box-shadow: 0 0 2px rgb(0, 0, 0), 0 0 10px rgb(255, 255, 255);
+      }
+      #playButton {
+        background-color: rgb(226, 0, 0);
+        width: 46px;
+        height: 46px;
+        transform: translateY(7px);
+      }
+      #playButton:after {
+        position: absolute;
+        content: "";
+        width: 0;
+        height: 0;
+        top: 13px;
+        left: 18px;
+        border-left: 14px solid rgb(47, 185, 93);
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+      }
+      #pauseButton:before {
+        position: absolute;
+        content: "";
+        width: 4px;
+        height: 18px;
+        top: 6px;
+        left: 9px;
+        background-color: rgb(226, 0, 0);
+        border-radius: 1px;
+      }
+      #pauseButton:after {
+        position: absolute;
+        content: "";
+        width: 4px;
+        height: 18px;
+        top: 6px;
+        left: 17px;
+        background-color: rgb(226, 0, 0);
+        border-radius: 1px;
+      }
+      #stopButton:after {
+        position: absolute;
+        content: "";
+        width: 12px;
+        height: 12px;
+        top: 9px;
+        left: 9px;
+        background-color: rgb(226, 0, 0);
+        border-radius: 2px;
+      }
+      .petals {
+        position: absolute;
+        border: 3px solid rgb(255, 248, 252);
+        border-radius: 50%;
+      }
+      .message {
+        max-width: 500px;
+        margin: auto;
+        padding: 20px;
+        line-height: 1.7em;
+        text-align: justify;
+        font-family: "Indie Flower", cursive;
+        font-weight: bold;
+      }
+      .messageTitle {
+        padding-bottom: 10px;
+        color: rgb(190, 100, 100);
+      }
+      .messageText {
+        padding-left: 20px;
+      }
+      h2 {
+        font-size: 18px;
+        text-align: center;
+      }
+      footer {
+        font-family: "Indie Flower", cursive;
+        font-weight: bold;
+        color: rgb(196, 151, 163);
+      }
+    </style>
+  </head>
+  <body onload="run()">
+    <div id="container">
+      <header>
+        <p>Merry Christmas</p>
+        <p>&</p>
+        <p>Happy Holidays!</p>
+      </header>
+      <canvas id="xmasTree" width="300px" height="500px"
+        >Your browser does not support canvas.</canvas
+      >
+      <audio id="myAudio">
+        <source src="../assets/Sound-Files/clappingsfx.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+      <div class="audioButtons">
+        <div id="pauseButton" onclick="pauseAudio()"></div>
+        <div id="playButton" onclick="playAudio()"></div>
+        <div id="stopButton" onclick="stopAudio()"></div>
+      </div>
+      <div class="crashIt">
+        <button onclick="changeIt()">Change it!</button>
+        <button onclick="breakIt()">Break it!</button>
+        <button onclick="fixIt()">Fix it!</button>
+      </div>
+      <div class="message">
+        <div class="messageTitle">
+          <h2>“How the Grinch Stole Christmas”</h2>
+          <h2>by Dr. Suess</h2>
+        </div>
+        <div class="messageText">
+          <p>&hellip;So he paused. And the Grinch put his hand to his ear.</p>
+          <p>And he did hear a sound rising over the snow.</p>
+          <p>It started in low. Then it started to grow.</p>
+          <p>But the sound wasn't sad! Why, this sound sounded merry!</p>
+          <p>It couldn't be so! But it WAS merry! VERY!</p>
+          <p>He stared down at Whoville! The Grinch popped his eyes!</p>
+          <p>Then he shook! What he saw was a shocking surprise!</p>
+          <p>Every Who down in Whoville, the tall and the small,</p>
+          <p>Was singing! Without any presents at all!</p>
+          <p>He HADN'T stopped Christmas from coming! IT CAME!</p>
+          <p>Somehow or other, it came just the same!</p>
+          <p>And the Grinch, with his grinch-feet ice-cold in the snow,</p>
+          <p>Stood puzzling and puzzling: "How could it be so?"</p>
+          <p>"It came with out ribbons! It came without tags!"</p>
+          <p>"It came without packages, boxes or bags!"</p>
+          <p>And he puzzled three hours, till his puzzler was sore.</p>
+          <p>Then the Grinch thought of something he hadn't before!</p>
+          <p>"Maybe Christmas," he thought, "doesn't come from a store."</p>
+          <p>
+            "Maybe Christmas...perhaps...means a little bit more!&rdquo;&hellip;
+          </p>
+        </div>
+      </div>
+      <footer>
+        <a href="javascript: history.go(-1)"><button>Starcloud</button></a>
+        <p>
+          Original Xmas tree code modified from
+          <a href="https://github.com/anvaka/atree">Andrei Kashcha @ GitHub</a>
+        </p>
+      </footer>
+    </div>
+  </body>
+  <script>
+    var thetamin = 0,
+      thetamax = 7 * Math.PI, //half spiral count
+      period = 10, //slowness
+      linespacing = 1 / 30,
+      linelength = linespacing / 2,
+      yscreenoffset = 250,
+      xscreenoffset = 150,
+      xscreenscale = 360, //adjust size here too!
+      yscreenscale = 360,
+      ycamera = 2, //y position
+      zcamera = -3, //zoom. flips on positive number
+      rate = 1 / (2 * Math.PI), //tallness, bigger longer
+      factor = rate / 3; //fatness, bigger fatter
+
+    S1C1 = "rgb(255, 0, 0)";
+    S1C2 = "rgb(112, 0, 0)";
+    S1C3 = "rgb(34, 0, 0)";
+    S2C1 = "rgb(0, 255, 204)";
+    S2C2 = "rgb(0, 51, 34)";
+    S2C3 = "rgb(0, 34, 17)";
+
+    var bug = Math.floor(Math.random() * 5 + 1);
+
+    var toClearTimeout;
+
+    function changeIt() {
+      var change = Math.floor(Math.random() * 6 + 1);
+      switch (change) {
+        case 1:
+          S1C1 = "yellow";
+          S1C2 = "rgb(133, 134, 68)";
+          S1C3 = "rgb(98, 99, 56)";
+          S2C1 = "white";
+          S2C2 = "rgb(133, 133, 133)";
+          S2C3 = "rgb(70, 70, 70)";
+          break;
+        case 2:
+          S1C1 = "rgb(0, 255, 204)";
+          S1C2 = "rgb(0, 51, 34)";
+          S1C3 = "rgb(0, 34, 17)";
+          S2C1 = "rgb(57, 242, 255)";
+          S2C2 = "rgb(33, 77, 158)";
+          S2C3 = "rgb(14, 38, 70)";
+          break;
+        case 3:
+          S1C1 = "rgb(183, 144, 255)";
+          S1C2 = "rgb(108, 63, 190)";
+          S1C3 = "rgb(61, 40, 100)";
+          S2C1 = "white";
+          S2C2 = "rgb(133, 133, 133)";
+          S2C3 = "rgb(70, 70, 70)";
+          break;
+        case 4:
+          S1C1 = "rgb(255, 0, 0)";
+          S1C2 = "rgb(112, 0, 0)";
+          S1C3 = "rgb(34, 0, 0)";
+          S2C1 = "rgb(251, 144, 255)";
+          S2C2 = "rgb(173, 57, 177)";
+          S2C3 = "rgb(108, 27, 110)";
+          break;
+        case 5:
+          S1C1 = "rgb(248, 255, 155)";
+          S1C2 = "rgb(133, 134, 68)";
+          S1C3 = "rgb(98, 99, 56)";
+          S2C1 = "rgb(255, 152, 68)";
+          S2C2 = "rgb(158, 82, 19)";
+          S2C3 = "rgb(82, 44, 14)";
+          break;
+        case 6:
+          S1C1 = "rgb(255, 0, 0)";
+          S1C2 = "rgb(112, 0, 0)";
+          S1C3 = "rgb(34, 0, 0)";
+          S2C1 = "rgb(0, 255, 204)";
+          S2C2 = "rgb(0, 51, 34)";
+          S2C3 = "rgb(0, 34, 17)";
+          break;
+      }
+      console.log(change);
+      clearTimeout(toClearTimeout);
+      run();
+    }
+
+    function breakIt() {
+      switch (bug) {
+        case 1:
+          S1C1 = "yellow";
+          S1C2 = "rgb(112, 0, 0)";
+          S1C3 = "rgb(34, 0, 0)";
+          S2C1 = "black";
+          S2C2 = "rgb(0, 51, 34)";
+          S2C3 = "white";
+          break;
+        case 2:
+          S1C1 = "black";
+          S1C2 = "black";
+          S1C3 = "rgb(34, 0, 0)";
+          S2C1 = "rgb(251, 144, 255)";
+          S2C2 = "rgb(173, 57, 177)";
+          S2C3 = "rgb(108, 27, 110)";
+          break;
+        case 3:
+          S1C1 = "rgb(248, 255, 155)";
+          S1C2 = "rgb(133, 134, 68)";
+          S1C3 = "rgb(98, 99, 56)";
+          S2C1 = "black";
+          S2C2 = "black";
+          S2C3 = "rgb(108, 27, 110)";
+          break;
+        case 4:
+          S1C1 = "rgb(0, 255, 204)";
+          S1C2 = "rgb(0, 51, 34)";
+          S1C3 = "rgb(0, 34, 17)";
+          S2C1 = "rgb(255, 0, 0)";
+          S2C2 = "rgb(112, 0, 0)";
+          S2C3 = "rgb(34, 0, 0)";
+          break;
+        case 5:
+          S1C1 = "black";
+          S1C2 = "rgb(57, 242, 255)";
+          S1C3 = "rgb(70, 70, 70)";
+          S2C1 = "black";
+          S2C2 = "rgb(255, 152, 68)";
+          S2C3 = "rgb(34, 0, 0)";
+          break;
+      }
+      console.log(bug);
+      run();
+    }
+
+    function fixIt() {
+      document.location.reload();
+    }
+
+    function run() {
+      var ctx = document.getElementById("xmasTree").getContext("2d"),
+        spirals = [
+          new spiral({
+            foreground: S1C3,
+            angleoffset: Math.PI * 0.9,
+            factor: 0.9 * factor
+          }),
+          new spiral({
+            foreground: S2C3,
+            angleoffset: -Math.PI * 0.1,
+            factor: 0.9 * factor
+          }),
+          new spiral({
+            foreground: S1C2,
+            angleoffset: Math.PI * 0.95,
+            factor: 0.95 * factor
+          }),
+          new spiral({
+            foreground: S2C2,
+            angleoffset: -Math.PI * 0.05,
+            factor: 0.95 * factor
+          }),
+          new spiral({
+            foreground: S1C1,
+            angleoffset: Math.PI,
+            factor: factor
+          }),
+          new spiral({
+            foreground: S2C1,
+            angleoffset: 0,
+            factor: factor
+          })
+        ];
+
+      renderFrame();
+
+      function renderFrame() {
+        slowAnimation(renderFrame);
+
+        ctx.clearRect(0, 0, 500, 500);
+        ctx.beginPath();
+        spirals.forEach(renderSpiral);
+      }
+
+      function renderSpiral(spiralvar) {
+        spiralvar.render(ctx);
+      }
+
+      function spiral(config) {
+        var offset = 0;
+        var lineSegments = computeLineSegments();
+
+        this.render = function(ctx) {
+          offset--;
+          if (offset <= -period) {
+            offset += period;
+          }
+
+          lineSegments[offset].forEach(drawLineSegment);
+        };
+
+        function drawLineSegment(segment) {
+          stroke(config.foreground, segment.start.alpha);
+          ctx.moveTo(segment.start.x, segment.start.y);
+          ctx.lineTo(segment.end.x, segment.end.y);
+        }
+
+        function computeLineSegments() {
+          var lineSegments = {};
+          var factor = config.factor;
+          var thetanew, thetaold;
+          for (var offset = 0; offset > -period; offset--) {
+            lineSegments[offset] = lines = [];
+            for (
+              var theta =
+                thetamin +
+                getdtheta(
+                  thetamin,
+                  (offset * linespacing) / period,
+                  rate,
+                  factor
+                );
+              theta < thetamax;
+              theta += getdtheta(theta, linespacing, rate, factor)
+            ) {
+              thetaold = theta >= thetamin ? theta : thetamin;
+              thetanew = theta + getdtheta(theta, linelength, rate, factor);
+
+              if (thetanew <= thetamin) {
+                continue;
+              }
+
+              lines.push({
+                start: getPointByAngle(
+                  thetaold,
+                  factor,
+                  config.angleoffset,
+                  rate
+                ),
+                end: getPointByAngle(thetanew, factor, config.angleoffset, rate)
+              });
+            }
+          }
+
+          return lineSegments;
+        }
+      }
+
+      function stroke(color, alpha) {
+        ctx.closePath();
+        ctx.stroke();
+        ctx.strokeStyle = color;
+        ctx.globalAlpha = alpha;
+        ctx.beginPath();
+      }
+
+      function getPointByAngle(theta, factor, angleoffset, rate) {
+        var x = theta * factor * Math.cos(theta + angleoffset);
+        var z = -theta * factor * Math.sin(theta + angleoffset);
+        var y = rate * theta;
+        //project coorinates into 2d space:
+        var point = projectTo2d(x, y, z);
+        // calculate point's color alpha level:
+        point.alpha =
+          Math.atan((((y * factor) / rate) * 0.1 + 0.02 - z) * 40) * 0.35 +
+          0.65;
+
+        return point;
+      }
+
+      function getdtheta(theta, lineLength, rate, factor) {
+        return (
+          lineLength / Math.sqrt(rate * rate + factor * factor * theta * theta)
+        );
+      }
+
+      function projectTo2d(x, y, z) {
+        return {
+          x: xscreenoffset + xscreenscale * (x / (z - zcamera)),
+          y: yscreenoffset + yscreenscale * ((y - ycamera) / (z - zcamera))
+        };
+      }
+
+      //slow render frame rate
+      function slowAnimation(callback) {
+        toClearTimeout = window.setTimeout(callback, 40);
+      }
+    }
+
+    var myMusic = document.getElementById("myAudio");
+
+    function playAudio() {
+      myMusic.play();
+    }
+
+    function pauseAudio() {
+      myMusic.pause();
+    }
+
+    function stopAudio() {
+      myMusic.pause();
+      myMusic.currentTime = 0;
+    }
+    var snowContainer = document.getElementById("container");
+
+    (function(petalsDocument, petalsBody, windowSize) {
+      var petalCss = petalsDocument.createElement("div");
+      petalCss.id = "sakura";
+
+      petalCss.innerHTML =
+        "<style>" +
+        ".t1{border-color:rgb(255, 255, 255);}" +
+        ".t2{border-color:rgb(250, 241, 242);}" +
+        ".t3{border-color:rgb(224, 224, 224);}" +
+        ".t4{border-color:rgb(247, 241, 217);}" +
+        ".t5{border-color:rgb(217, 243, 247);}" +
+        ".y1{transform:scale(1);}" +
+        ".y2{transform:scale(0.9);}" +
+        ".y3{transform:scale(0.8);}" +
+        ".y4{transform:scale(0.7);}" +
+        ".y5{transform:scale(0.6);}" +
+        ".y6{transform:scale(0.5);}" +
+        "</style>";
+
+      petalsBody.appendChild(petalCss);
+
+      var windowHeight = windowSize.innerHeight;
+      var scrollPosition =
+        petalsDocument.documentElement.scrollTop || petalsBody.scrollTop;
+      var opacityPetals = 0.1;
+      var valueTop = new Array();
+      var valueLeft = new Array();
+      var swingEnd = new Array();
+      var valueGravity = new Array();
+      var petalId = new Array();
+      var swingStart = new Array();
+      var k = 0;
+
+      //scroll
+      petalsDocument.addEventListener(
+        "scroll",
+        function() {
+          scrollPosition =
+            petalsDocument.documentElement.scrollTop || petalsBody.scrollTop;
+        },
+        false
+      );
+
+      window.addEventListener(
+        "resize",
+        function() {
+          windowHeight = windowSize.innerHeight;
+        },
+        false
+      );
+
+      for (var i = 0; i < 44; i++) {
+        var makePetals = petalsDocument.createElement("div");
+        makePetals.id = "hanabira" + i;
+        valueTop[i] = Math.random() * -500 + scrollPosition; //start position top
+        valueLeft[i] = Math.random() * windowSize.innerWidth;
+        makePetals.setAttribute("class", "petals");
+        makePetals.setAttribute(
+          "style",
+          "opacity:" +
+            opacityPetals * i +
+            ";top:" +
+            valueTop[i] +
+            "px;left:" +
+            valueLeft[i] +
+            "px;"
+        );
+        var clss =
+          "petals t" +
+          (Math.floor(Math.random() * 5) + 1) +
+          " y" +
+          (Math.floor(Math.random() * 6) + 1);
+        makePetals.setAttribute("class", clss);
+        petalCss.appendChild(makePetals);
+        swingEnd[i] = Math.random() * 40 + 5;
+        valueGravity[i] = Math.random() * 5 + 2;
+        petalId[i] = petalsDocument.getElementById("hanabira" + i);
+        swingStart[i] = 0; //initial swing
+      }
+
+      setInterval(function() {
+        for (var i = 0; i < 44; i++) {
+          if (valueTop[i] < scrollPosition + windowHeight - 3) {
+            if (swingEnd[i] >= swingStart[i]) {
+              //left
+              valueLeft[i] = valueLeft[i] + 0.5 + Math.random() * 0.5; //increase left
+            } else {
+              valueLeft[i] = valueLeft[i] - 0.5 - Math.random() * 0.5; //decrease left
+            }
+            if (swingEnd[i] * 3 <= swingStart[i]) {
+              //restart counter
+              swingStart[i] = 0;
+            }
+          } else {
+            valueTop[i] = scrollPosition - 3;
+            valueLeft[i] = Math.random() * windowSize.innerWidth; //determine left position
+          }
+          //wind
+          if (k >= 100 && k <= 105) {
+            valueLeft[i] = valueLeft[i] + 3;
+          } else if (k >= 106 && k <= 120) {
+            valueLeft[i] = valueLeft[i] + 5;
+          } else if (k >= 121 && k <= 290) {
+            valueLeft[i] = valueLeft[i] + 8;
+          } else if (k >= 291 && k <= 320) {
+            valueLeft[i] = valueLeft[i] + 4;
+          } else if (k >= 321 && k <= 330) {
+            valueLeft[i] = valueLeft[i] + 2;
+          } else if (k >= 500 && k <= 505) {
+            valueLeft[i] = valueLeft[i] - 3;
+          } else if (k >= 506 && k <= 520) {
+            valueLeft[i] = valueLeft[i] - 5;
+          } else if (k >= 521 && k <= 790) {
+            valueLeft[i] = valueLeft[i] - 8;
+          } else if (k >= 791 && k <= 820) {
+            valueLeft[i] = valueLeft[i] - 4;
+          } else if (k >= 821 && k <= 830) {
+            valueLeft[i] = valueLeft[i] - 2;
+          } else if (k >= 900) {
+            k = 0;
+          }
+
+          valueTop[i] = valueTop[i] + valueGravity[i]; //update top
+          petalId[i].style.top = valueTop[i] + "px"; //update the values
+          petalId[i].style.left = valueLeft[i] + "px";
+          swingStart[i]++;
+        }
+        k++;
+      }, 45);
+    })(window.document, snowContainer, window);
+  </script>
+</html>

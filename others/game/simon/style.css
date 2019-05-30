@@ -1,0 +1,121 @@
+* {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Original Surfer", cursive, sans-serif;
+  font-size: 16px;
+  background-color: antiquewhite;
+  text-align: center;
+}
+input,
+button {
+  border: none;
+  outline: none;
+}
+button {
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 22px;
+  padding: 5px;
+  border-radius: 50%;
+  transition-duration: 0.3s;
+  background-color: rgb(63, 63, 63);
+  color: rgb(204, 204, 204);
+}
+input[type="checkbox"] {
+  cursor: pointer;
+}
+#title {
+  font-family: "Original Surfer", cursive;
+  font-size: 40px;
+}
+#switch {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 5px;
+}
+#turn {
+  background: #330000;
+  color: red;
+  font-size: 20px;
+  height: 30px;
+  width: 50px;
+  line-height: 30px;
+
+  margin: auto;
+}
+
+#outerCircle {
+  background: #385a94;
+  border-radius: 50%;
+  height: 500px;
+  width: 500px;
+  position: relative;
+  border-style: solid;
+  border-width: 10px;
+  margin: auto;
+  margin-top: 60px;
+  box-shadow: 8px 8px 15px 5px #888888;
+}
+.quarter {
+  position: absolute;
+  height: 250px;
+  width: 250px;
+  top: 50%;
+  left: 50%;
+  border-style: solid;
+  border-width: 5px;
+}
+#topleft {
+  border-radius: 250px 0 0 0;
+  -moz-border-radius: 250px 0 0 0;
+  -webkit-border-radius: 250px 0 0 0;
+  background: darkgreen;
+  margin: -250px 0px 0px -250px;
+}
+
+#topright {
+  border-radius: 0 250px 0 0;
+  -moz-border-radius: 0 250px 0 0;
+  -webkit-border-radius: 0 250px 0 0;
+  background: darkred;
+  margin: -250px 0px 0px 0px;
+}
+
+#bottomleft {
+  border-radius: 0 0 0 250px;
+  -moz-border-radius: 0 0 0 250px;
+  -webkit-border-radius: 0 0 0 250px;
+  background: goldenrod;
+  margin: 0px -250px 0px -250px;
+}
+
+#bottomright {
+  border-radius: 0 0 250px 0;
+  -moz-border-radius: 0 0 250px 0;
+  -webkit-border-radius: 0 0 250px 0;
+  background: darkblue;
+  margin: 0px 0px -250px 0px;
+}
+
+#innerCircle {
+  position: absolute;
+  background: grey;
+  border-radius: 50%;
+  height: 250px;
+  width: 250px;
+  border-style: solid;
+  border-width: 10px;
+  top: 50%;
+  left: 50%;
+  margin: -125px 0px 0px -125px;
+  padding: 30px 20px;
+}
+.message {
+  margin-top: 30px;
+}

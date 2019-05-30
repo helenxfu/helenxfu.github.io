@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Cloud</title>
+    <style type="text/css">
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: Tahoma, Geneva, sans-serif;
+        font-size: 13px;
+        line-height: 1.6;
+        background: rgb(137, 203, 231);
+        overflow-x: hidden;
+        height: 100%;
+      }
+      html {
+        height: 100%;
+      }
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      li {
+        display: block;
+      }
+      a {
+        text-decoration: none;
+      }
+      img {
+        width: 100%;
+        display: block;
+      }
+
+      #sky {
+        bottom: 0;
+        left: 0;
+        right: -250px;
+        top: 0;
+        position: fixed;
+        z-index: -1;
+      }
+      .cloud {
+        transform: translateX(-250px);
+        width: 250px;
+      }
+      /*
+@-webkit-keyframes animateCloud {
+    0%   {margin-left: -100%;}
+    100% {margin-left: 100%;}
+}
+@-moz-keyframes animateCloud {
+    0%   {margin-left: -1000px;}
+    100% {margin-left: 100%;}
+}*/
+      @keyframes animateCloud {
+        0% {
+          margin-left: 0%;
+        }
+        100% {
+          margin-left: 100%;
+        }
+      }
+
+      .x1 {
+        animation: animateCloud 35s linear infinite;
+        width: 100px;
+      }
+
+      .x2 {
+        animation: animateCloud 20s linear infinite;
+      }
+
+      .x3 {
+        animation: animateCloud 37s linear infinite;
+        width: 150px;
+      }
+
+      .x4 {
+        animation: animateCloud 28s linear infinite;
+        width: 150px;
+      }
+
+      .x5 {
+        animation: animateCloud 40s linear infinite;
+        width: 130px;
+      }
+      .x6 {
+        animation: animateCloud 47s linear infinite;
+        width: 190px;
+      }
+      .x7 {
+        animation: animateCloud 25s linear infinite;
+        width: 230px;
+      }
+      .x8 {
+        animation: animateCloud 54s linear infinite;
+        width: 170px;
+      }
+      .x9 {
+        animation: animateCloud 38s linear infinite;
+        width: 220px;
+      }
+      .x10 {
+        animation: animateCloud 27s linear infinite;
+        width: 110px;
+      }
+      .x11 {
+        animation: animateCloud 19s linear infinite;
+        width: 177px;
+      }
+      .x12 {
+        animation: animateCloud 33s linear infinite;
+      }
+      .container {
+        display: flex;
+        justify-content: center;
+      }
+      .pageTitle {
+        position: absolute;
+        font-family: Impact, Charcoal, sans-serif;
+        color: rgb(255, 255, 255);
+        text-align: center;
+        font-size: 40px;
+        top: 150px;
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        animation: animateIn 3s, animateTitle 3s alternate infinite;
+      }
+      .textBox {
+        position: absolute;
+        background-color: rgb(61, 127, 136);
+        color: rgb(186, 245, 245);
+        top: 320px;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        animation: animateIn2 3s, animateTitle 2.8s alternate infinite;
+        max-width: 400px;
+        margin-bottom: 150px;
+      }
+      .buttons {
+        position: absolute;
+        top: 230px;
+      }
+      input,
+      button {
+        border: none;
+        outline: none;
+      }
+      button {
+        font-family: "Arial Black", Gadget, sans-serif;
+        font-size: 12px;
+        padding: 20px;
+        border-radius: 15px;
+        text-decoration: none;
+        display: inline-block;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        transition-duration: 0.5s;
+        margin: 0 10px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: rgb(121, 145, 167);
+      }
+      button:active {
+        box-shadow: none;
+        background-color: rgb(67, 108, 146);
+        color: aliceblue;
+      }
+      #starcloud {
+        background-color: rgb(55, 44, 97);
+        color: aliceblue;
+        animation: animateIn2 6s, animateTitle 3.3s alternate infinite;
+      }
+      #switch {
+        animation: animateIn2 6s, animateTitle 2.5s alternate infinite;
+      }
+      @keyframes animateIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      @keyframes animateIn2 {
+        0% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      @keyframes animateTitle {
+        0% {
+          transform: translateY(0px);
+        }
+        100% {
+          transform: translateY(-20px);
+        }
+      }
+
+      h1 {
+        line-height: 2;
+        font-size: 21px;
+        text-align: center;
+        font-weight: normal;
+        font-family: Georgia, Serif;
+        color: rgb(244, 253, 255);
+      }
+      h2 {
+        line-height: 2;
+        font-size: 16px;
+        font-family: "Courier New", Courier, monospace;
+        text-align: center;
+        font-weight: normal;
+        color: rgb(10, 15, 63);
+      }
+      h3 {
+        line-height: 2;
+        padding-top: 10px;
+      }
+      p {
+        text-indent: 20px;
+        text-align: justify;
+      }
+
+      @media screen and (max-width: 450px) {
+        .textBox {
+          max-width: 300px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="sky">
+      <div class="cloud x1">
+        <img src="./assets/cloud.png" class="toggleImg" />
+      </div>
+      <div class="cloud x2">
+        <img src="./assets/cloud.png" class="toggleImg" />
+      </div>
+      <div class="cloud x3">
+        <img src="./assets/cloud.png" class="toggleImg" />
+      </div>
+      <div class="cloud x4">
+        <img src="./assets/cloud.png" class="toggleImg" />
+      </div>
+      <div class="cloud x5">
+        <img src="./assets/cloud.png" class="toggleImg" />
+      </div>
+      <div class="cloud x6">
+        <img src="./assets/cloud.png" class="toggleImg" />
+      </div>
+      <div class="cloud x7">
+        <img src="./assets/cloud.png" class="toggleImg" />
+      </div>
+      <div class="cloud x8">
+        <img src="./assets/cloud.png" class="toggleImg" />
+      </div>
+      <div class="cloud x9">
+        <img src="./assets/cloud.png" class="toggleImg" />
+      </div>
+      <div class="cloud x10">
+        <img src="./assets/cloud.png" class="toggleImg" />
+      </div>
+      <div class="cloud x11">
+        <img src="./assets/cloud.png" class="toggleImg" />
+      </div>
+      <div class="cloud x12">
+        <img src="./assets/cloud.png" class="toggleImg" />
+      </div>
+    </div>
+    <div class="container">
+      <div class="pageTitle">Clouds</div>
+      <div class="buttons">
+        <button id="switch" onclick="switchClick()">Switch</button>
+        <button id="starcloud" onclick="history.go(-1); return false;">
+          Starcloud
+        </button>
+      </div>
+      <div class="textBox">
+        <h1>Floating Clouds Animation</h1>
+        <h2>&#9728; What I did... &#9728;</h2>
+        <h3>My Rule:</h3>
+        <p>
+          Website must be responsive. That means the clouds must cover left to
+          right, 100% of the whole screen, no matter the screen size.
+        </p>
+        <h3>Animation:</h3>
+        <p>
+          &#9728;<u>clouds</u> - keyframe linear animation. Left to right at
+          different timing.
+        </p>
+        <p>
+          &#9728;<u>content</u> - keyframe alternate animation. Up down
+          different timing. Opacity fade-in on page load.
+        </p>
+        <h3>Art:</h3>
+        <p>Art drawn with Autodesk Sketchbook, &copy; Starcloud.</p>
+        <h3>Javascript:</h3>
+        <p>
+          Click the switch button. Image and background color must continuously
+          switch 1, 2, 3, 1, 2, 3...
+        </p>
+        <h3>Note:</h3>
+        <p>
+          &#9728; If you have transform property in both the animation and the
+          selector, they will conflict and the animation will be given the
+          priority.
+        </p>
+        <p>
+          &#9728; "Cloud" is a class selector in this case. Therefore to have
+          the javascript effective for the image swap, make sure to have the
+          function execute for the number of images. Also note that to have
+          javascript catch elements such as "body", need the [0] to function
+          properly.
+        </p>
+        <p>&#9728; Add some margin-bottom to give the scrollbar a break!</p>
+      </div>
+    </div>
+  </body>
+  <script>
+    var imgsrc = new Array();
+    imgsrc[0] = "./assets/cloud.png";
+    imgsrc[1] = "../assets/cats/base.png";
+    imgsrc[2] = "../assets/cats/fish.png";
+
+    var backColor = new Array();
+    backColor[0] = "rgb(137, 203, 231)";
+    backColor[1] = "rgb(255, 227, 117)";
+    backColor[2] = "rgb(121, 145, 167)";
+
+    var i = 0;
+    var imgCount = document.getElementsByClassName("toggleImg");
+
+    function switchClick() {
+      i += 1;
+
+      if (i >= imgsrc.length) {
+        i = 0;
+      }
+      for (x = 0; x < imgCount.length; x++) {
+        imgCount[x].src = imgsrc[i];
+      }
+      document.getElementsByTagName("BODY")[0].style.backgroundColor =
+        backColor[i];
+    }
+  </script>
+</html>

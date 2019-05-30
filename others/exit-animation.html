@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>CSS Hover Exit Animation Tutorial</title>
+    <style type="text/css">
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 30px;
+        text-align: center;
+        font-family: sans-serif;
+        font-size: 13px;
+      }
+      .content {
+        max-width: 1100px;
+        margin: auto;
+      }
+      .c1,
+      .c2 {
+        width: 50%;
+        float: left;
+      }
+      img {
+        max-width: 300px;
+        width: 100%;
+        background-color: transparent;
+      }
+      .c1 img:hover {
+        transform: rotate(45deg);
+        transition-duration: 1s;
+      }
+      .c2 img:hover {
+        transform: rotate(45deg);
+      }
+      .c2 img {
+        transition-duration: 1s;
+      }
+      .codebox {
+        text-align: left;
+        background-color: lightgrey;
+        margin: 10px;
+        border: 2px dotted red;
+        overflow-x: auto;
+        margin: auto;
+        max-width: 300px;
+      }
+      .row::after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      .footer {
+        padding: 10px;
+      }
+      a {
+        text-decoration: none;
+        color: red;
+      }
+      a:hover {
+        color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <div class="header">
+        <h1>CSS hover exit animation tutorial</h1>
+        <h3>ホバー終了アニメーションについて</h3>
+        <p>
+          For exit animation, need to employ transitions on the main selector
+          rather than the hover selector.
+        </p>
+        <p>
+          終了アニメーションを表示するには、「transition-duration」をホバーセレクターではなく、メインセレクターに着けることが必要です。
+        </p>
+      </div>
+      <div class="row">
+        <div class="c1">
+          <img src="../assets/cats/redscarf.png" />
+          <h2>Transition on hover selector</h2>
+          <h4>ホバーセレクター</h4>
+          <div class="codebox">
+            <pre>
+.c1 img:hover{
+	transform: rotate(45deg);
+	transition-duration: 1s;
+}
+
+
+				</pre
+            >
+          </div>
+        </div>
+        <div class="c2">
+          <img src="../assets/cats/greenscarf.png" />
+          <h2>Transition on main selector</h2>
+          <h4>メインセレクター</h4>
+          <div class="codebox">
+            <pre>
+.c2 img:hover{
+	transform: rotate(45deg);
+}
+.c2 img{
+	transition-duration: 1s;
+}
+				</pre
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <p>---- <a href="javascript: history.go(-1)">Back</a> ----</p>
+      </div>
+    </div>
+  </body>
+</html>

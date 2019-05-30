@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Parallax Tutorial</title>
+    <style type="text/css">
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Comic Sans MS", cursive, sans-serif;
+        font-style: italic;
+        font-size: 16px;
+      }
+      body,
+      html {
+        height: 100vh;
+      }
+      a {
+        text-decoration: none;
+        background-color: rgb(25, 0, 255);
+        color: aliceblue;
+        padding: 15px 20px;
+        transition-duration: 0.5s;
+      }
+      a:hover {
+        background-color: rgb(83, 172, 199);
+        color: rgb(22, 55, 83);
+      }
+      .photo {
+        position: relative;
+        opacity: 0.7;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 100%;
+      }
+      .p1 {
+        background-image: url("../assets/cats/tuxedo.png");
+      }
+      .p2 {
+        background-image: url("../assets/cats/butterfly.png");
+      }
+      .p3 {
+        background-image: url("../assets/cats/lady.png");
+      }
+      .p4 {
+        background-image: url("../assets/cats/star.png");
+      }
+      .text,
+      .text2 {
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        top: 60%;
+      }
+      .text2 {
+        top: 70%;
+      }
+      span {
+        background-color: rgba(255, 153, 0, 0.692);
+        color: rgb(37, 0, 22);
+        padding: 15px 20px;
+      }
+      .textBox {
+        padding: 30px;
+        background-color: rgb(36, 11, 11);
+        color: rgb(168, 142, 142);
+        min-height: 150px;
+        text-indent: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="photo p1">
+      <div class="text">
+        <span style="background-color: rgb(255, 0, 0); color:aliceblue;"
+          >Parallax Tutorial</span
+        >
+      </div>
+      <div class="text2">
+        <span id="sub">Scroll down to see the magic...</span>
+      </div>
+    </div>
+    <div class="textBox">
+      <p>
+        Parallax scrolling is when a content moves as a different speed than
+        another to create parallax effect in the webpage.
+      </p>
+      <p>
+        Basically, it is what you see when you ride on a train and see the trees
+        in front of you zip past right in front of you while the mountains in
+        the background moves as a much slower rate.
+      </p>
+    </div>
+    <div class="photo p2">
+      <div class="text">
+        <span>Ta-da!</span>
+      </div>
+    </div>
+    <div
+      class="textBox"
+      style="background-color: rgb(129, 129, 129); color:rgb(35, 72, 104);"
+    >
+      <p>
+        In this simplified version, the background is fixed into position of the
+        page, while the div moves with the scroll. (Essentially this is more of
+        cool scrolling effect than actual parallax.) Set the image in a
+        container, as a div, and set the height of the container. Fix the image
+        in place so it does not move with the scroll.
+      </p>
+      <p>No Javascript or other complex stuff, just CSS!</p>
+    </div>
+    <div class="photo p3">
+      <div class="text">
+        <span>See the difference?</span>
+      </div>
+    </div>
+    <div class="textBox">
+      <p>
+        It could be done with just the height of the div with pixels, but if you
+        want to cover the whole if the page (because responsive webpage is what
+        I believe to be the industry standard nowadays…), make sure to set the
+        height of the div to 100%, and also you must apply height 100% to both
+        the html and body in CSS.
+      </p>
+      <p>
+        The top and bottom image containers are set to 100% of the page height,
+        while the middle two image containers are set to 400px each.
+      </p>
+      <p>Check out my code for more details!</p>
+    </div>
+    <div class="photo p4">
+      <div class="text">
+        <a href="javascript: history.go(-1)">Return</a>
+      </div>
+    </div>
+  </body>
+  <script></script>
+</html>

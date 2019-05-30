@@ -299,7 +299,7 @@ nav a:active {
   margin: 20px auto;
   max-width: 1200px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
 }
 .skillList {
   background-color: rgb(183, 209, 201);
