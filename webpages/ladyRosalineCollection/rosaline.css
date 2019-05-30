@@ -90,7 +90,10 @@ nav {
   background-position: 70% top;
   background-repeat: no-repeat;
   background-size: contain;
-  height: 100%;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  height: 100vh;
   position: relative;
   margin: 0 auto;
 }
