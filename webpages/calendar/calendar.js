@@ -130,9 +130,7 @@ function showCalendar(month, year) {
           year == today.getFullYear() &&
           month == today.getMonth()
         ) {
-          check = document.createTextNode("\u2655");
-          cell.classList.add("crown", "highlightToday");
-          cell.appendChild(check);
+          cell.classList.add("highlightToday");
         }
         cell.appendChild(cellText);
         row.appendChild(cell);

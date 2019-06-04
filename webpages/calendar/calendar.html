@@ -13,6 +13,10 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Vanilla JS Calendar</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Cookie&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="calendar.css" />
   </head>
 
@@ -41,8 +45,8 @@
         <div id="controls" class="shellFooter">
           <form>
             <label>Select Year and Month</label>
-            <select id="year" name="year" onchange="jump()"> </select>
-            <select id="month" name="month" onchange="jump()"> </select>
+            <select id="year" name="year" onchange="jump()"></select>
+            <select id="month" name="month" onchange="jump()"></select>
           </form>
           <button onclick="reset()" class="whiteButton">Reset</button>
         </div>
