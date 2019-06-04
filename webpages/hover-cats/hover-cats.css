@@ -7,7 +7,7 @@
 }
 body {
   color: rgb(60, 64, 67);
-  font-family: Papyrus, sans-serif;
+  font-family: "Schoolbell", Papyrus, cursive;
   font-size: 16px;
   text-align: center;
 }
@@ -45,6 +45,7 @@ button {
   margin: 6px 2px;
   border-radius: 10px;
   box-shadow: 0 2px #999;
+  font-family: "Schoolbell", Papyrus, cursive;
 }
 button:hover {
   filter: saturate(50%);
