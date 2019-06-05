@@ -10,7 +10,7 @@ body {
   overflow-x: hidden;
 }
 body {
-  font-family: "Indie Flower", cursive;
+  font-family: "Gloria Hallelujah", cursive;
   font-weight: bold;
   font-size: 16px;
   background-color: rgb(16, 0, 26);
@@ -52,6 +52,7 @@ button {
   background-color: rgb(236, 187, 194);
   transition-duration: 0.5s;
   z-index: 3;
+  font-family: "Gloria Hallelujah", cursive;
 }
 button:hover {
   background-color: rgb(199, 94, 146);
@@ -111,14 +112,14 @@ button:active {
   top: 100px;
   background-image: url("../../assets/SakuraParallax/layer_6.png");
 }
-
+.mainContainer {
+  font-family: "Noto Serif JP", serif;
+}
 .lyrics {
   position: relative;
   padding: 40px 0;
-  font-family: "Sawarabi Mincho", sans-serif;
   text-align: center;
 }
-
 svg {
   width: 200px;
   height: 200px;

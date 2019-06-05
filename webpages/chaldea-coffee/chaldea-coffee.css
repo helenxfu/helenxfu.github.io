@@ -6,7 +6,7 @@
   padding: 0;
 }
 body {
-  font-family: sans-serif;
+  font-family: "Merriweather", serif;
   font-size: 13px;
   color: rgb(60, 64, 67);
   background-image: url("chaldea-assets/chaldea-background.png");
@@ -33,7 +33,6 @@ a:hover {
   margin: auto;
 }
 header {
-  font-family: "Sofia";
   text-shadow: 1px 1px 10px rgb(255, 255, 255), -1px -1px 10px rgb(255, 255, 0);
   text-align: center;
   background: white;
@@ -43,16 +42,17 @@ header {
   padding: 10px;
 }
 h1 {
+  font-family: "Dancing Script", cursive;
   font-size: 37px;
   color: rgb(51, 51, 51);
 }
 h2 {
-  font-family: "Copperplate";
+  font-family: "Cinzel", serif;
   text-align: center;
   margin-bottom: 4px;
 }
 h3 {
-  font-family: "Sofia";
+  font-family: "Dancing Script", cursive;
   margin-bottom: 5px;
   text-align: center;
 }
@@ -65,7 +65,7 @@ nav {
   flex-wrap: wrap;
 }
 nav > a {
-  font-family: "Copperplate";
+  font-family: "Cinzel", serif;
   font-size: 15px;
   padding: 8px 25px;
 }
@@ -130,6 +130,8 @@ footer {
 }
 .credit {
   font-size: 10px;
+  font-family: "Open Sans", sans-serif;
+  margin-top: 7px;
 }
 footer > p > a:hover {
   color: rgb(224, 190, 158);
