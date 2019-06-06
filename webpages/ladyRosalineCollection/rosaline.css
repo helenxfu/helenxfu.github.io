@@ -166,17 +166,20 @@ footer a {
 }
 
 @media screen and (max-width: 500px) {
-  .photoContainer {
-    height: 160%;
-  }
-  .photo {
-    height: 160vh;
-  }
-  .pickup {
-    top: 20%;
-  }
   .mix {
     width: 75px;
     height: 90px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .photoContainer {
+    height: 110%;
+  }
+  .photo {
+    height: 110vh;
+  }
+  .pickup {
+    top: 20%;
   }
 }
