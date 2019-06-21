@@ -126,8 +126,8 @@ h1 {
   transform: scale(1.4);
 }
 .highlightToday {
-  background-color: rgba(253, 212, 212, 0.6);
-  color: rgb(211, 77, 171);
+  background-color: rgba(253, 212, 212, 0.6) !important;
+  color: rgb(211, 77, 171) !important;
 }
 .shellFooter {
   background-color: rgb(202, 198, 198);
