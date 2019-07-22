@@ -167,7 +167,7 @@ svg path.hanabira {
 .stopButton {
   background-color: rgb(250, 226, 255);
 }
-.playButton:after {
+.playButton::after {
   position: absolute;
   content: "";
   width: 0;
@@ -178,7 +178,7 @@ svg path.hanabira {
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
 }
-.pauseButton:before {
+.pauseButton::before {
   position: absolute;
   content: "";
   width: 4px;
@@ -188,7 +188,7 @@ svg path.hanabira {
   background-color: rgb(131, 24, 134);
   border-radius: 1px;
 }
-.pauseButton:after {
+.pauseButton::after {
   position: absolute;
   content: "";
   width: 4px;
@@ -198,7 +198,7 @@ svg path.hanabira {
   background-color: rgb(131, 24, 134);
   border-radius: 1px;
 }
-.stopButton:after {
+.stopButton::after {
   position: absolute;
   content: "";
   width: 12px;
