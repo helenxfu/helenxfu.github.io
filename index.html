@@ -21,7 +21,7 @@
   </head>
   <body>
     <header>
-      <img src="./assets/cats/starcloudLogo.png" class="headerLogo" />
+      <img src="./assets/cats/starcloudLogo.png" class="headerLogo" alt="" />
       <div id="languages" class="languages">
         <a>English</a>
         <a class="tooltip"
@@ -76,32 +76,38 @@
         </p>
       </div>
       <div id="about" class="section centering">
-        <h2>About Me</h2>
-        <img src="./assets/cats/starcloudLogo.png" class="myPhoto" />
-        <h3>Helen Xinyun Fu</h3>
-        <p>
-          I have a serious passion for creating
-          <span class="emphasis">beautiful, engaging, dynamic</span>
-          websites and mobile apps.
-        </p>
+        <div class="aboutTop">
+          <h2>About Me</h2>
+          <img
+            src="./assets/cats/starcloudLogo.png"
+            class="myPhoto helenxfu"
+            alt=""
+          />
+          <h3>Helen Xinyun Fu</h3>
+          <p>
+            I have a serious passion for creating
+            <span class="emphasis">beautiful, engaging, dynamic</span>
+            websites and mobile apps.
+          </p>
+        </div>
         <div class="skillSection">
           <div class="skillList">
-            <img src="./assets/cats/starcloudLogo.png" class="myPhoto" />
+            <img src="./assets/cats/starcloudLogo.png" class="myPhoto" alt="" />
             <h3>Code</h3>
             <div class="listCentering">
               <div></div>
               <ul>
                 <li>HTML/CSS/SCSS (in-progress)</li>
-                <li>Javascript</li>
-                <li>React (Native) (Redux in-progress)</li>
-                <li>Vue (Nuxt, Vuex)</li>
+                <li>JavaScript/TypeScript (in-progress)</li>
+                <li>React (Native)/ Redux (in-progress)</li>
+                <li>Vue (Nuxt)/ Vuex</li>
                 <li>Java (in-progress)</li>
               </ul>
               <div></div>
             </div>
           </div>
           <div class="skillList">
-            <img src="./assets/cats/starcloudLogo.png" class="myPhoto" />
+            <img src="./assets/cats/starcloudLogo.png" class="myPhoto" alt="" />
             <h3>Design</h3>
             <div class="listCentering">
               <div></div>
@@ -121,88 +127,30 @@
       <div id="portfolio" class="portfolio">
         <h2>Portfolio</h2>
         <h3>Work Experience</h3>
-        <div class="portfolioSection">
-          <a href="https://nuts-app.com/"><h4>NUTS.</h4></a>
-          <h5>Javascript / React Native / Nuxt / Photoshop / XD</h5>
-          <p>
-            Health related smartphone application for ios/android + store
-            interface in Nuxt
-          </p>
-          <p><strong>Position:</strong> front-end developer</p>
-          <p><i>2018-present</i></p>
-          <p>
-            Involved in code and design overhaul of the project.
-          </p>
+        <div class="workExperience">
+          <div
+            class="experience"
+            onclick="window.location.href='https://nuts-app.com/'"
+          >
+            <h4>NUTS.</h4>
+            <h5>
+              Javascript / React Native / Nuxt / TypeScript / Photoshop / XD
+            </h5>
+            <p>
+              Creating of health related smartphone application for ios/android
+              in React Native + store interface in Nuxt + Order entry system in
+              TypeScript
+            </p>
+            <p><strong>Position:</strong> front-end developer</p>
+            <p><i>2018-present</i></p>
+          </div>
+          <div class="screenshots">
+            <!-- <img src="./assets/cats/canada.png" alt="" />
+            <img src="./assets/cats/canada.png" alt="" /> -->
+          </div>
         </div>
         <h3>Personal Projects</h3>
-        <div class="portfolioSection">
-          <a href="./webpages/calendar/calendar.html"
-            ><h4>Calendar Collection</h4></a
-          >
-          <h5>Javascript / React / Vue</h5>
-          <p>
-            Calendar made in JS, React, and Vue. Designed with different themes.
-          </p>
-        </div>
-        <div class="portfolioSection">
-          <a href="./webpages/calendar/calendar.html"
-            ><h4>Vue Organized Todo</h4></a
-          >
-          <h5>Vue / Vuex / Sass</h5>
-          <p>
-            With date countdown, importance, and completion filters etc for task
-            organization. Language options with i18n. Theming in Sass. SVG logo,
-            assets made using Illustrator.
-          </p>
-        </div>
-        <div class="portfolioSection">
-          <a href="./webpages/chaldea-coffee/chaldea-coffee.html"
-            ><h4>Chaldea Coffee</h4></a
-          >
-          <h5>HTML / CSS</h5>
-          <p>Tribute page, designed with a coffee theme.</p>
-        </div>
-        <div class="portfolioSection">
-          <a href="./webpages/hover-cats/hover-cats.html"
-            ><h4>Hover Cats</h4></a
-          >
-          <h5>Javascript</h5>
-          <p>
-            Designed with ideas of fun and color, full of movement, sound, and
-            with a lot of buttons to play with.
-          </p>
-        </div>
-        <div class="portfolioSection">
-          <a href="./webpages/photoweb/photoweb.html"
-            ><h4>Starcloud Photos</h4></a
-          >
-          <h5>Javascript</h5>
-          <p>
-            Designed with a sophisticated, clean look to have more focus on
-            photos.
-          </p>
-        </div>
-        <div class="portfolioSection">
-          <a href="./webpages/thousand-blossoms/thousand-blossoms.html"
-            ><h4>Thousand Blossoms</h4></a
-          >
-          <h5>Javascript, SVG, Parallax scrolling</h5>
-          <p>
-            Tribute page to the song 「千本桜」 by 黒うさ. Design, piano
-            cover(in-progress), art(in-progress).
-          </p>
-        </div>
-        <div class="portfolioSection">
-          <a href="./webpages/ladyRosalineCollection/rosaline.html"
-            ><h4>Lady Rosaline Collection</h4></a
-          >
-          <h5>Javascript, scroll effect</h5>
-          <p>
-            Inspired by magical girls transformation and Project Runway. Assets
-            created with Sketchbook, edit in Photoshop. Logo made with
-            Illustrator.
-          </p>
-        </div>
+        <div id="personalProjects" class="personalProjects"></div>
       </div>
       <div
         id="contact"

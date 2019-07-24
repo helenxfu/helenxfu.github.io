@@ -1,10 +1,13 @@
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+
 html {
   scroll-behavior: smooth;
 }
@@ -56,6 +59,7 @@ a {
 }
 img {
   width: 100%;
+  height: auto;
   display: block;
 }
 hr {
@@ -74,6 +78,7 @@ h2 {
 }
 h3 {
   font-size: 18px;
+  text-align: center;
 }
 h4 {
   font-size: 17px;
@@ -278,6 +283,9 @@ nav a:active {
   padding: 30px;
 }
 
+.aboutTop:hover .helenxfu {
+  animation: heartbeat 1s infinite;
+}
 .myPhoto {
   border: 2px solid rgb(68, 94, 87);
   border-radius: 50%;
@@ -285,6 +293,7 @@ nav a:active {
   height: 150px;
   margin: 10px auto;
   background-color: cadetblue;
+  transition: transform 1s;
 }
 .emphasis {
   text-transform: uppercase;
@@ -306,6 +315,10 @@ nav a:active {
   margin: 5px;
   padding: 20px;
 }
+.skillList:hover > .myPhoto {
+  transform: scale(1.2);
+}
+
 .listCentering {
   display: flex;
   justify-content: space-between;
@@ -320,38 +333,127 @@ nav a:active {
 .portfolio {
   margin-top: 30px;
 }
-.portfolio > h3 {
-  margin: 13px 0 0 15px;
+.portfolio h3 {
+  margin: 10px 0;
 }
-.portfolioSection {
+.experience {
+  outline: 2px dashed rgb(255, 255, 255);
+  outline-offset: -5px;
+  padding: 20px;
+  text-align: center;
   background-image: linear-gradient(
-    140deg,
+    180deg,
     rgba(0, 0, 0, 0.7),
-    rgb(183, 209, 201),
-    rgb(255, 246, 220) 50%
+    rgb(183, 209, 201) 30%,
+    rgb(255, 246, 220) 90%
   );
-  margin: 5px;
-  padding: 10px;
 }
-.portfolioSection h4 {
-  transition-duration: 0.6s;
-  color: rgb(130, 184, 137);
+.experience h4 {
+  color: rgb(255, 246, 220);
 }
-.portfolioSection h4:hover {
-  color: rgb(0, 181, 209);
+.experience > h5 {
+  color: rgb(41, 64, 107);
+  margin: 5px 0;
 }
-.portfolioSection > h5 {
-  color: rgb(10, 61, 54);
-  font-style: oblique;
-  font-weight: normal;
-  margin-bottom: 4px;
-  mix-blend-mode: difference;
-}
-.portfolioSection > p {
-  color: rgb(14, 17, 59);
+.experience > p {
   font-size: 13px;
-  mix-blend-mode: difference;
+  margin-top: 4px;
 }
+.screenshots {
+  display: flex;
+}
+.screenshots img {
+  display: inline-block;
+}
+
+.personalProjects,
+.workExperience {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  padding: 5px;
+  cursor: pointer;
+}
+.workExperience {
+  grid-template-columns: 1fr 3fr;
+}
+
+.portfolioWorks {
+  position: relative;
+}
+
+.portfolioWorks > img {
+  background-color: rgb(107, 133, 182);
+  transition: opacity ease-out 0.8s;
+}
+.portfolioWorks:hover > img {
+  opacity: 0.3;
+}
+.cardText {
+  position: absolute;
+  top: 30%;
+  width: calc(100% - 30px);
+  height: calc(80% - 30px);
+  color: rgb(255, 255, 255);
+  margin: 15px;
+  text-shadow: 0 0 8px rgb(0, 0, 0);
+  transition: all ease-out 0.8s;
+  overflow: hidden;
+  text-align: center;
+}
+.cardText > h5 {
+  margin: 5px 0;
+  color: rgb(255, 246, 220);
+  font-size: 14px;
+  transition: color 1s;
+}
+.cardText > p {
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 1s;
+}
+.portfolioWorks:hover .cardText {
+  color: black;
+  text-shadow: 0 0 8px rgb(255, 255, 255);
+  top: 10%;
+}
+.portfolioWorks:hover .cardText > p {
+  opacity: 1;
+}
+.portfolioWorks:hover .cardText > h5 {
+  color: rgb(112, 131, 125);
+}
+
+.portfolioWorks::before,
+.portfolioWorks::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  left: 5px;
+  right: 5px;
+  opacity: 1;
+  transition: transform ease-out 0.8s;
+  z-index: 1;
+}
+
+.portfolioWorks::before {
+  border-top: 2px dashed white;
+  border-bottom: 2px dashed white;
+  transform: scale(0, 1);
+}
+
+.portfolioWorks::after {
+  border-left: 2px dashed white;
+  border-right: 2px dashed white;
+  transform: scale(1, 0);
+}
+
+.portfolioWorks:hover::before,
+.portfolioWorks:hover::after {
+  transform: scale(1, 1);
+}
+
 .contact {
   padding: 30px;
   display: flex;
@@ -411,6 +513,15 @@ footer {
   }
 }
 
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
 @keyframes shake {
   0% {
     transform: rotate(0deg);
@@ -425,8 +536,30 @@ footer {
     transform: rotate(0deg);
   }
 }
+@media screen and (max-width: 940px) {
+  .personalProjects {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .workExperience {
+    grid-template-columns: 1fr 2fr;
+  }
+}
 @media screen and (max-width: 640px) {
   .skillSection {
+    grid-template-columns: 1fr;
+  }
+  .personalProjects {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .workExperience {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (max-width: 500px) {
+  .personalProjects {
+    grid-template-columns: 1fr;
+  }
+  .workExperience {
     grid-template-columns: 1fr;
   }
 }

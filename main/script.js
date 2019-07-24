@@ -33,12 +33,79 @@ const slides = [
     typewriter: "Contact me for freelance or for hire :)"
   }
 ];
+
+const portfolio = [
+  {
+    title: "Calendar Collection",
+    tools: "Javascript",
+    description: "Calendar made in JS, React, and Vue. Designed with different themes. Assets (Sketchbook / Photoshop / Illustrator)",
+    source: "./assets/cats/starcloudLogo.png",
+    link: "./webpages/calendar/calendar.html"
+  },
+  {
+    title: "Calendar Collection",
+    tools: "Vue",
+    description: "Vue Calendar",
+    source: "./assets/cats/starcloudLogo.png",
+    link: ""
+  },
+  {
+    title: "Calendar Collection",
+    tools: "React",
+    description: "React Calendar",
+    source: "./assets/cats/starcloudLogo.png",
+    link: ""
+  },
+  {
+    title: "Candy Jar: Task Manager",
+    tools: "Vue / Vuex / Sass",
+    description: "With date countdown, importance, and completion filters etc for task organization. Language options with i18n. Theming in Sass. SVG logo, assets (Illustrator).",
+    source: "./assets/cats/starcloudLogo.png",
+    link: ""
+  },
+  {
+    title: "Chaldea Coffee",
+    tools: "HTML / CSS",
+    description: "Tribute page, designed with a coffee theme.",
+    source: "./assets/cats/starcloudLogo.png",
+    link: "./webpages/chaldea-coffee/chaldea-coffee.html"
+  },
+  {
+    title: "Hover Cats",
+    tools: "Javascript",
+    description: "Designed with ideas of fun and color, full of movement, sound, and with a lot of buttons to play with. Graphic assets (Sketchbook / Photoshop)",
+    source: "./assets/cats/starcloudLogo.png",
+    link: "./webpages/hover-cats/hover-cats.html"
+  },
+  {
+    title: "Starcloud Photos",
+    tools: "Javascript",
+    description: "Designed with a sophisticated, clean look to have more focus on photos. Assets (Sketchbook / Photoshop / Illustrator)",
+    source: "./assets/cats/starcloudLogo.png",
+    link: "./webpages/photoweb/photoweb.html"
+  },
+  {
+    title: "Thousand Blossoms",
+    tools: "Javascript, SVG, Parallax scrolling",
+    description: "Tribute page to the song 「千本桜」 by 黒うさ. Design, piano cover(in-progress), art(in-progress).",
+    source: "./assets/cats/starcloudLogo.png",
+    link: "./webpages/thousand-blossoms/thousand-blossoms.html"
+  },
+  {
+    title: "Lady Rosaline Collection",
+    tools: "Javascript, scroll effect(PC)",
+    description: "Inspired by magical girls transformation and Project Runway. Assets (Sketchbook), graphic editing (Photoshop). Logo (Illustrator).",
+    source: "./assets/cats/starcloudLogo.png",
+    link: "./webpages/ladyRosalineCollection/rosaline.html"
+  }
+]
 let slideShow = document.getElementById("slideShow");
 let heroImgContainer = document.getElementById("heroImgContainer");
 let slideNumber = document.getElementById("slideNumber");
 let slideTab = document.getElementById("slideTab");
 let slideCaption = document.getElementById("slideCaption");
 let slideList = document.getElementById("slideList");
+let personalProjects = document.getElementById("personalProjects");
 let cell;
 let thumb;
 let contactCat = document.getElementById("contactCat");
@@ -53,7 +120,7 @@ let type;
 
 let navbar = document.getElementById("navbar");
 let sticky = navbar.offsetTop;
-window.onscroll = function() {
+window.onscroll = function () {
   stickyLock();
 };
 
@@ -70,7 +137,7 @@ function renderSlides() {
     cell = document.createElement("div");
     cell.innerHTML = `<img src="${
       slides[i].source
-    }" class="imgIndex hide fade" alt="">`;
+      }" class="imgIndex hide fade" alt="">`;
     heroImgContainer.appendChild(cell);
     thumb = document.createElement("img");
     thumb.src = slides[i].source;
@@ -82,6 +149,21 @@ function renderSlides() {
   activateSlide(0);
 }
 renderSlides();
+
+function renderPortfolio() {
+  for (let i = 0; i < portfolio.length; i++) {
+    cell = document.createElement("div");
+    cell.classList.add("portfolioWorks");
+    cell.innerHTML = `<img src="${portfolio[i].source}" alt="">
+      <div class="cardText">
+      <h4>${portfolio[i].title}</h4>
+      <h5>${portfolio[i].tools}</h5>
+      <p>${portfolio[i].description}</p></div>`
+    cell.onclick = () => (location.href = portfolio[i].link);
+    personalProjects.appendChild(cell);
+  }
+}
+renderPortfolio();
 
 function flipSlide(x) {
   let pass = currentSlide + x;
