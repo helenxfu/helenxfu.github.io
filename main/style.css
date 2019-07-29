@@ -359,12 +359,6 @@ nav a:active {
   font-size: 13px;
   margin-top: 4px;
 }
-.screenshots {
-  display: flex;
-}
-.screenshots img {
-  display: inline-block;
-}
 
 .personalProjects,
 .workExperience {
