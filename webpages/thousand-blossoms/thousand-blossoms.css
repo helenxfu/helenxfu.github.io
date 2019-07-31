@@ -394,17 +394,17 @@ footer {
   10% {
     fill: rgba(255, 255, 255, 0.3);
     stroke: rgb(255, 255, 255);
-    stroke-dashoffset: 500;
+    stroke-dashoffset: -400;
   }
   20% {
     fill: rgba(252, 170, 170, 0.3);
-    stroke: rgb(255, 62, 62);
-    stroke-dashoffset: 1000;
+    stroke: rgb(255, 52, 52);
+    stroke-dashoffset: -700;
   }
   30% {
     fill: rgba(252, 223, 170, 0.3);
     stroke: rgb(255, 176, 58);
-    stroke-dashoffset: 500;
+    stroke-dashoffset: -400;
   }
   40% {
     fill: rgba(251, 252, 170, 0.3);
@@ -423,18 +423,18 @@ footer {
   }
   70% {
     fill: rgba(178, 170, 252, 0.3);
-    stroke: rgb(120, 110, 255);
+    stroke: rgb(91, 134, 255);
     stroke-dashoffset: 500;
   }
   80% {
     fill: rgba(208, 170, 252, 0.3);
-    stroke: rgb(133, 58, 255);
+    stroke: rgb(148, 66, 255);
     stroke-dashoffset: 0;
   }
   90% {
     fill: transparent;
     stroke: rgb(245, 173, 192);
-    stroke-dashoffset: 500;
+    stroke-dashoffset: -400;
   }
   100% {
     fill: rgba(252, 170, 244, 0.3);
