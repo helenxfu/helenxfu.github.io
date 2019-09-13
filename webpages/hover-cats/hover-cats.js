@@ -198,10 +198,10 @@ function renderButtons() {
 }
 renderButtons();
 
-function topCatMouseEnter() {
+function toptransitionCatImageIn() {
   topCatImg.style.transform = "translateY(80px) rotate(180deg)";
 }
-function topCatMouseLeave() {
+function toptransitionCatImageOut() {
   topCatImg.style.transform = "translateY(-80px) rotate(180deg)";
 }
 

@@ -47,21 +47,21 @@ const portfolio = [
     tools: "Vue",
     description: "Vue Calendar",
     source: "./assets/cats/starcloudLogo.png",
-    link: ""
+    link: "https://helenxfu.github.io/vue-calendar/"
   },
-  {
-    title: "Calendar Collection",
-    tools: "React",
-    description: "React Calendar",
-    source: "./assets/cats/starcloudLogo.png",
-    link: ""
-  },
+  // {
+  //   title: "Calendar Collection",
+  //   tools: "React",
+  //   description: "React Calendar",
+  //   source: "./assets/cats/starcloudLogo.png",
+  //   link: ""
+  // },
   {
     title: "Candy Jar: Task Manager",
     tools: "Vue / Vuex / Sass",
-    description: "With date countdown, importance, and completion filters etc for task organization. Language options with i18n. Theming in Sass. SVG logo, assets (Illustrator).",
+    description: "With date countdown, importance, and completion filters etc for task organization. Language options with i18n. Theming in Sass. Dynamic SVG logo, icons, assets (Illustrator).",
     source: "./assets/cats/starcloudLogo.png",
-    link: ""
+    link: "https://helenxfu.github.io/todo-vue/"
   },
   {
     title: "Chaldea Coffee",
@@ -132,7 +132,6 @@ function stickyLock() {
   }
 }
 
-function renderSlides() {
   for (let i = 0; i < slides.length; i++) {
     cell = document.createElement("div");
     cell.innerHTML = `<img src="${
@@ -147,10 +146,7 @@ function renderSlides() {
   }
 
   activateSlide(0);
-}
-renderSlides();
 
-function renderPortfolio() {
   for (let i = 0; i < portfolio.length; i++) {
     cell = document.createElement("div");
     cell.classList.add("portfolioWorks");
@@ -162,18 +158,17 @@ function renderPortfolio() {
     cell.onclick = () => (location.href = portfolio[i].link);
     personalProjects.appendChild(cell);
   }
-}
-renderPortfolio();
 
-function flipSlide(x) {
-  let pass = currentSlide + x;
-  if (pass < 0) {
-    pass = slides.length - 1;
+
+function flipSlide(num) {
+  let newSlide = currentSlide + num;
+  if (newSlide < 0) {
+    newSlide = slides.length - 1;
   }
-  if (pass === slides.length) {
-    pass = 0;
+  if (newSlide === slides.length) {
+    newSlide = 0;
   }
-  activateSlide(pass);
+  activateSlide(newSlide);
 }
 
 function activateSlide(num) {
@@ -227,14 +222,14 @@ function scrollToTop() {
   });
 }
 
-function catMouseEnter() {
+function transitionCatImageIn() {
   contactCat.style.transform = "translateY(-150px)";
   setTimeout(() => {
     contactCatImg.style.animationPlayState = "running";
   }, 1500);
 }
 
-function catMouseLeave() {
+function transitionCatImageOut() {
   contactCat.style.transform = "translateY(0)";
   contactCatImg.style.animationPlayState = "paused";
 }
