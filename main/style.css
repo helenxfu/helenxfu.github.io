@@ -307,9 +307,18 @@ nav a:active {
   outline-offset: -5px;
   margin: 5px;
   padding: 20px;
+  background-size: cover;
 }
 .skillList:hover > .myPhoto {
   transform: scale(1.2);
+}
+.skillsetArt {
+  background-image: url("../assets/index-banner/skillset-art.png");
+  background-position: right top;
+}
+.skillsetCode {
+  background-image: url("../assets/index-banner/skillset-code.png");
+  background-position: left top;
 }
 .astrik {
   font-size: 10px;
@@ -366,56 +375,84 @@ nav a:active {
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 10px;
   padding: 5px;
-  cursor: pointer;
 }
 .workExperience {
   grid-template-columns: 1fr 3fr;
+  cursor: pointer;
 }
 
 .portfolioWorks {
   position: relative;
+  background: rgb(39, 35, 49);
+  cursor: pointer;
 }
 
 .portfolioWorks > img {
-  background-color: rgb(107, 133, 182);
   transition: opacity ease-out 0.8s;
+  border: 10px solid rgb(112, 131, 125);
 }
 .portfolioWorks:hover > img {
   opacity: 0.3;
 }
-.cardText {
+.cardTextContainer {
   position: absolute;
-  top: 30%;
-  width: calc(100% - 30px);
-  height: calc(80% - 30px);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.cardText {
   color: rgb(255, 255, 255);
   margin: 15px;
-  text-shadow: 0 0 8px rgb(0, 0, 0);
   transition: all ease-out 0.8s;
-  overflow: hidden;
+  overflow-y: scroll;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: calc(100% - 30px);
+  opacity: 0;
+  text-shadow: 0 0 8px rgb(112, 131, 125);
+}
+.cardText::-webkit-scrollbar {
+  width: 0px; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
+}
+.cardText .spacing {
+  flex-grow: 1;
 }
 .cardText > h5 {
-  margin: 5px 0;
-  color: rgb(255, 246, 220);
+  color: rgb(191, 235, 222);
   font-size: 14px;
-  transition: color 1s;
+  margin-bottom: 3px;
 }
 .cardText > p {
   font-size: 12px;
-  opacity: 0;
-  transition: opacity 1s;
+  transition: 1s;
+  color: white;
+}
+.linkContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+  width: 80px;
+  margin: 5px auto;
+}
+.linkContainer a {
+  background-color: rgb(112, 131, 125);
+  border-radius: 50%;
+}
+.linkContainer a:hover {
+  background-color: rgb(24, 27, 53);
+}
+.linkIcon {
+  padding: 5px;
+}
+.githubIcon {
+  padding: 2px;
 }
 .portfolioWorks:hover .cardText {
-  color: black;
-  text-shadow: 0 0 8px rgb(255, 255, 255);
-  top: 10%;
-}
-.portfolioWorks:hover .cardText > p {
   opacity: 1;
-}
-.portfolioWorks:hover .cardText > h5 {
-  color: rgb(112, 131, 125);
 }
 
 .portfolioWorks::before,
@@ -429,6 +466,7 @@ nav a:active {
   opacity: 1;
   transition: transform ease-out 0.8s;
   z-index: 1;
+  pointer-events: none;
 }
 
 .portfolioWorks::before {
@@ -494,66 +532,4 @@ footer {
 
 .fade {
   animation: fading 1s;
-}
-
-@keyframes fading {
-  0% {
-    transform: translateX(10px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes heartbeat {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.1);
-  }
-}
-
-@keyframes shake {
-  0% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(5deg);
-  }
-  75% {
-    transform: rotate(-5deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-}
-@media screen and (max-width: 940px) {
-  .personalProjects {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .workExperience {
-    grid-template-columns: 1fr 2fr;
-  }
-}
-@media screen and (max-width: 640px) {
-  .skillSection {
-    grid-template-columns: 1fr;
-  }
-  .personalProjects {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .workExperience {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-@media screen and (max-width: 500px) {
-  .personalProjects {
-    grid-template-columns: 1fr;
-  }
-  .workExperience {
-    grid-template-columns: 1fr;
-  }
 }

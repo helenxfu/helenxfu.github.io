@@ -9,7 +9,13 @@
 body {
   font-family: sans-serif;
   font-size: 16px;
-  color: rgb(34, 34, 34);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  background: linear-gradient(rgb(47, 150, 163), rgb(48, 62, 143));
 }
 
 a {
@@ -55,4 +61,28 @@ button {
   padding: 5px;
   border-radius: 5px;
   transition-duration: 0.3s;
+}
+
+.location,
+.temperature {
+  height: 30vh;
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.temperature {
+  flex-direction: column;
+}
+.degree-section {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.degree-section span {
+  margin: 10px;
+  font-size: 30px;
+}
+.degree-section h2 {
+  font-size: 40px;
 }
