@@ -209,7 +209,8 @@ function activateSlide(num) {
   activeSlide[num].classList.remove("hide");
   slideNumber.textContent = num + 1 + "/" + slides.length;
   slideTab.textContent = slides[num].tab;
-  slideTab.onclick = () => (location.href = slides[num].link);
+  // TODO: make slides
+  // slideTab.onclick = () => (location.href = slides[num].link);
   slideCaption.textContent = "";
   activeTab[num] = activeTab[num].classList.add("active");
   typeWriter(slides[num].typewriter);
