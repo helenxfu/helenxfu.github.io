@@ -94,7 +94,7 @@ const portfolio = [
   {
     title: "Thousand Blossoms",
     tools: "Javascript, SVG, Parallax scrolling",
-    description: "Tribute page to the song 「千本桜」 by 黒うさ. Design, piano cover(in-progress), art(in-progress).",
+    description: "Tribute page to the song 「千本桜」 by 黒うさ. Design, piano cover(in-progress), art(in-progress)(firewatch placeholder).",
     source: "./assets/index-banner/port-blossoms.png",
     link: "./webpages/thousand-blossoms/thousand-blossoms.html",
     codebase: "https://github.com/helenxfu/helenxfu.github.io/tree/master/webpages/thousand-blossoms"
