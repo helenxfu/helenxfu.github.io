@@ -41,7 +41,7 @@ const portfolio = [
     description: "Calendar made in JS, React, and Vue. Designed with different themes. Assets (Sketchbook / Photoshop / Illustrator)",
     source: "./assets/index-banner/port-cal.png",
     link: "./webpages/calendar/calendar.html",
-    codebase: "https://github.com/helenxfu/helenxfu.github.io/tree/master/webpages/calendar"
+    codebase: "https://github.com/helenxfu/helenxfu.github.io/tree/master/webpages/calendar/"
   },
   {
     title: "Calendar Collection",
@@ -49,7 +49,7 @@ const portfolio = [
     description: "Vue Calendar",
     source: "./assets/index-banner/port-vue-cal.png",
     link: "https://helenxfu.github.io/vue-calendar/",
-    codebase: "https://github.com/helenxfu/vue-calendar"
+    codebase: "https://github.com/helenxfu/vue-calendar/"
   },
   // {
   //   title: "Calendar Collection",
@@ -65,7 +65,7 @@ const portfolio = [
     description: "With date countdown, importance, sort, and completion & text filters for task organization. Language options with i18n. Theming in Sass. Firebase authentication and database. Dynamic SVG logo, icons, assets (Illustrator).",
     source: "./assets/index-banner/port-todo.png",
     link: "https://starcloud-candy-jar.netlify.com/",
-    codebase: "https://github.com/helenxfu/todo-vue"
+    codebase: "https://github.com/helenxfu/todo-vue/"
   },
   {
     title: "Chaldea Coffee",
@@ -73,7 +73,7 @@ const portfolio = [
     description: "Tribute page, designed with a coffee theme.",
     source: "./assets/index-banner/port-coffee.png",
     link: "./webpages/chaldea-coffee/chaldea-coffee.html",
-    codebase: "https://github.com/helenxfu/helenxfu.github.io/tree/master/webpages/chaldea-coffee"
+    codebase: "https://github.com/helenxfu/helenxfu.github.io/tree/master/webpages/chaldea-coffee/"
   },
   {
     title: "Hover Cats",
@@ -81,7 +81,7 @@ const portfolio = [
     description: "Designed with ideas of fun and color, full of movement, sound, and with a lot of buttons to play with. Graphic assets (Sketchbook / Photoshop)",
     source: "./assets/index-banner/port-hover-cats.png",
     link: "./webpages/hover-cats/hover-cats.html",
-    codebase: "https://github.com/helenxfu/helenxfu.github.io/tree/master/webpages/hover-cats"
+    codebase: "https://github.com/helenxfu/helenxfu.github.io/tree/master/webpages/hover-cats/"
   },
   {
     title: "Starcloud Photos",
@@ -89,7 +89,7 @@ const portfolio = [
     description: "Designed with a sophisticated, clean look to have more focus on photos. Assets (Sketchbook / Photoshop / Illustrator)",
     source: "./assets/index-banner/port-photos.png",
     link: "./webpages/photoweb/photoweb.html",
-    codebase: "https://github.com/helenxfu/helenxfu.github.io/tree/master/webpages/photoweb"
+    codebase: "https://github.com/helenxfu/helenxfu.github.io/tree/master/webpages/photoweb/"
   },
   {
     title: "Thousand Blossoms",
@@ -97,7 +97,7 @@ const portfolio = [
     description: "Tribute page to the song 「千本桜」 by 黒うさ. Design, piano cover(in-progress), art(in-progress)(firewatch placeholder).",
     source: "./assets/index-banner/port-blossoms.png",
     link: "./webpages/thousand-blossoms/thousand-blossoms.html",
-    codebase: "https://github.com/helenxfu/helenxfu.github.io/tree/master/webpages/thousand-blossoms"
+    codebase: "https://github.com/helenxfu/helenxfu.github.io/tree/master/webpages/thousand-blossoms/"
   },
   {
     title: "Lady Rosaline Collection",
@@ -105,7 +105,7 @@ const portfolio = [
     description: "Inspired by magical girls transformation and Project Runway. Assets (Sketchbook), graphic editing (Photoshop). Logo (Illustrator).",
     source: "./assets/index-banner/port-rosaline.png",
     link: "./webpages/ladyRosalineCollection/rosaline.html",
-    codebase: "https://github.com/helenxfu/helenxfu.github.io/tree/master/webpages/ladyRosalineCollection"
+    codebase: "https://github.com/helenxfu/helenxfu.github.io/tree/master/webpages/ladyRosalineCollection/"
   }
 ]
 let slideShow = document.getElementById("slideShow");
