@@ -64,7 +64,7 @@ button:active {
 .parallaxContainer {
   position: relative;
   height: 500px;
-  background-color: rgb(131, 210, 241);
+  background-color: rgb(61, 172, 255);
   z-index: -22;
   overflow: hidden;
 }
@@ -79,37 +79,31 @@ button:active {
   left: 0;
   top: 0;
   background-position: top center;
-  background-size: 2200px 400px;
+  background-size: 3000px 500px;
   background-repeat: repeat-x;
   z-index: inherit;
   opacity: 0.99;
 }
 .layer0 {
-  top: 0px;
   background-image: url("../../assets/SakuraParallax/layer_0.png");
 }
 .layer1 {
-  top: 30px;
   background-image: url("../../assets/SakuraParallax/layer_1.png");
 }
 .layer2 {
-  top: 60px;
+  top: 10px;
   background-image: url("../../assets/SakuraParallax/layer_2.png");
 }
 .layer3 {
-  top: 70px;
   background-image: url("../../assets/SakuraParallax/layer_3.png");
 }
 .layer4 {
-  top: 80px;
   background-image: url("../../assets/SakuraParallax/layer_4.png");
 }
 .layer5 {
-  top: 90px;
   background-image: url("../../assets/SakuraParallax/layer_5.png");
 }
 .layer6 {
-  top: 100px;
   background-image: url("../../assets/SakuraParallax/layer_6.png");
 }
 .mainContainer {
@@ -137,7 +131,8 @@ svg path.hanabira {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
   stroke-width: 3;
-  animation: drawSakura 6s ease-in 0s forwards, colorSakura 30s infinite linear 6s;
+  animation: drawSakura 6s ease-in 0s forwards,
+    colorSakura 30s infinite linear 6s;
 }
 
 .horizontalButtons {
