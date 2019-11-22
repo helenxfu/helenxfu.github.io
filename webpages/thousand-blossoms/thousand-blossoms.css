@@ -228,9 +228,9 @@ footer {
 }
 .socialLinks {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-gap: 15px;
-  width: 130px;
+  width: 180px;
   margin: 0 auto;
   padding: 10px 0 20px;
   cursor: pointer;
@@ -241,7 +241,7 @@ footer {
 .links:hover {
   transform: scale(1.5);
 }
-.linkMail {
+.linkFacebook {
   transform: rotate(-5deg);
 }
 .linkTwitter {
@@ -253,7 +253,9 @@ footer {
 .linkGithub {
   transform: rotate(-10deg);
 }
-
+.linkStarcloud {
+  transform: scale(1.1) translateY(4px) rotate(-5deg);
+}
 .petals {
   position: absolute;
   border: 10px solid rgb(230, 168, 202);
