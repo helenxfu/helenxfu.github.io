@@ -158,9 +158,9 @@ footer a {
 }
 .socialLinks {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-gap: 10px;
-  width: 110px;
+  width: 230px;
   cursor: pointer;
   margin-bottom: 10px;
 }
