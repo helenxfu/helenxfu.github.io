@@ -82,8 +82,9 @@ header {
   justify-content: space-between;
   align-items: center;
 }
-h1 {
-  font-size: 22px;
+.logo {
+  width: 140px;
+  margin: 5px;
 }
 h2 {
   margin: 20px 0 15px 0;
@@ -94,7 +95,7 @@ h2 {
   font-size: 20px;
 }
 .photoSection {
-  padding-top: 30px;
+  padding-top: 61px;
 }
 .catPhotos {
   display: grid;
@@ -129,7 +130,7 @@ h2 {
   transition: background-color 0.3s;
 }
 .paginationButton:hover {
-  background-color: rgb(240, 168, 240);
+  background-color: #f0a8f0;
 }
 .activate {
   color: rgb(182, 0, 182);
@@ -138,7 +139,20 @@ h2 {
 .about {
   padding: 10px;
 }
-
+.banner {
+  max-width: 333px;
+}
+.message {
+  margin: 20px;
+}
+.message > h3 {
+  margin-bottom: 10px;
+}
+.strong {
+  background-color: black;
+  color: white;
+  padding: 0 5px;
+}
 footer {
   background-color: black;
   color: rgb(238, 238, 238);
