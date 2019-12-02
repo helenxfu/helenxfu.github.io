@@ -80,7 +80,6 @@ button {
 
 nav {
   font-size: 14px;
-  padding: 10px 0;
 }
 .photoContainer {
   height: 100%;
@@ -108,13 +107,16 @@ nav {
   color: rgb(0, 0, 0);
   padding: 20px 0 0 10%;
 }
+.logo {
+  width: 150px;
+}
 .bandHeader {
   background-image: linear-gradient(
     110deg,
     rgba(255, 255, 255, 0.7) 10%,
     rgba(255, 255, 255, 0) 100%
   );
-  height: 250px;
+  height: 220px;
 }
 .pickup {
   position: absolute;
