@@ -1,36 +1,37 @@
 const slides = [
   {
-    source: "./assets/index-banner/banner2.png",
-    tab: "Hello World!",
-    link: "./webpages/photoweb/photoweb.html",
+    source: "./assets/index-banner/banner-hero.png",
+    tab: "Twitter",
+    link: "https://twitter.com/HelenStarcloud/",
     typewriter:
       "Welcome to my portfolio! Please take some time to have a look around! :)"
   },
   {
-    source: "./assets/index-banner/banner1.png",
-    tab: "click",
+    source: "./assets/index-banner/banner-calendar.png",
+    tab: "Click",
     link: "./webpages/calendar/calendar.html",
-    typewriter: "Calendar coded in vanilla + 2 frameworks."
+    typewriter: "Calendar coded in vanilla + 2 frameworks. (React coming)"
   },
   {
-    source: "./assets/index-banner/banner3.png",
+    source: "./assets/index-banner/banner-hover.png",
     tab: "Play!",
     link: "./webpages/hover-cats/hover-cats.html",
     typewriter:
       "Play with the buttons! Full of fun and color, movement, and sound."
   },
   {
-    source: "./assets/index-banner/banner2.png",
-    tab: "poke",
-    link: "",
+    source: "./assets/index-banner/banner-sakura.png",
+    tab: "Hanami",
+    link: "./webpages/thousand-blossoms/thousand-blossoms.html",
     typewriter:
-      "Todo list with date countdown, importance, and completion filters for task organization, and language option."
+      "Parallax scrolling for screen resolution up to 3000px wide!"
   },
   {
-    source: "./assets/index-banner/banner1.png",
-    tab: "enjoy ;)",
-    link: "",
-    typewriter: "Contact me for freelance or for hire :)"
+    source: "./assets/index-banner/banner-todo.png",
+    tab: "Poke",
+    link: "https://starcloud-candy-jar.netlify.com/",
+    typewriter:
+      "Todo list with date countdown, importance, and completion filters for task organization, and language option."
   }
 ];
 
@@ -61,8 +62,8 @@ const portfolio = [
   // },
   {
     title: "Candy Jar: Task Manager",
-    tools: "Vue / Vuex / Sass / Firebase ",
-    description: "With date countdown, importance, sort, and completion & text filters for task organization. Language options with i18n. Theming in Sass. Firebase authentication and database. Dynamic SVG logo, icons, assets (Illustrator).",
+    tools: "Vue / Vuex / Sass / Firebase / Jest / Cypress",
+    description: "With date countdown, importance, sort, and completion & text filters for task organization. Language options with i18n. Theming in Sass. Firebase authentication and database. Dynamic SVG logo, icons, assets (Illustrator). Testing in Jest and Cypress (in-progress).",
     source: "./assets/index-banner/port-todo.png",
     link: "https://starcloud-candy-jar.netlify.com/",
     codebase: "https://github.com/helenxfu/todo-vue/"
@@ -209,8 +210,7 @@ function activateSlide(num) {
   activeSlide[num].classList.remove("hide");
   slideNumber.textContent = num + 1 + "/" + slides.length;
   slideTab.textContent = slides[num].tab;
-  // TODO: make slides
-  // slideTab.onclick = () => (location.href = slides[num].link);
+  slideTab.onclick = () => (location.href = slides[num].link);
   slideCaption.textContent = "";
   activeTab[num] = activeTab[num].classList.add("active");
   typeWriter(slides[num].typewriter);
